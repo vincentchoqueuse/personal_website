@@ -1,0 +1,5 @@
+Jinja2
+pydata-sphinx-theme
+numpy
+scipy
+matplotlib
