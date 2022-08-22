@@ -64,6 +64,11 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+
+html_context = {
+   "default_mode": "light"
+}
+
 html_extra_path = ['extra']
 plot_include_source = True
 plot_html_show_source_link = False
