@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Course Website with Sphinx &#8212; personal website  documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cheatsheet" href="../cheatsheet/index.html" />
+    <link rel="prev" title="Tutorials" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../courses/index.html">
+  Courses
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../research/index.html">
+  Research
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../cheatsheet/index.html">
+  Cheatsheet
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/vincent-choqueuse-388a5720/" rel="noopener" target="_blank" title="Linkedin"><span><i class="fab fa-linkedin"></i></span>
+            <label class="sr-only">Linkedin</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/vincentchoqueuse/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Course Website with Sphinx
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting Started
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation">
+     Installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-documentation">
+     Creating a Documentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project-structure">
+     Project Structure
+    </a>
+    <ul class="visible nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-requirements-txt">
+       File
+       <code class="code docutils literal notranslate">
+        <span class="pre">
+         requirements.txt
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-index-rst">
+       File
+       <code class="code docutils literal notranslate">
+        <span class="pre">
+         index.rst
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-conf-py">
+       File
+       <code class="code docutils literal notranslate">
+        <span class="pre">
+         conf.py
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build">
+     Build
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-deployment">
+   Github Deployment
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Project Structure
+    </a>
+    <ul class="visible nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-gitignore">
+       File
+       <code class="code docutils literal notranslate">
+        <span class="pre">
+         .gitignore
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-sphinx-yml">
+       File
+       <code class="code docutils literal notranslate">
+        <span class="pre">
+         sphinx.yml
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="course-website-with-sphinx">
+<h1>Course Website with Sphinx<a class="headerlink" href="#course-website-with-sphinx" title="Permalink to this heading">#</a></h1>
+<p>Sphinx is a powerful documentation generator based on the reStructuredText markup language. It can be used to generate website in html or documentation in pdf from <code class="code docutils literal notranslate"><span class="pre">rst</span></code> files.
+This tool is perfect to publish course content on the internet since it works well with latex, code, matplotlib figure, …</p>
+<ul class="simple">
+<li><p>Example: <a class="reference external" href="https://github.com/vincentchoqueuse/cheatsheet_elec">https://github.com/vincentchoqueuse/cheatsheet_elec</a></p></li>
+</ul>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
+<p>First, sphinx need to be installed on your system. Furthermore, I recommend to also install the <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/">pydata sphinx theme</a> . This theme is super clean and
+it is used by many data science python librairies such as numpy, scipy and matplotlib.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install sphinx
+$ pip install pydata-sphinx-theme
+</pre></div>
+</div>
+</section>
+<section id="creating-a-documentation">
+<h3>Creating a Documentation<a class="headerlink" href="#creating-a-documentation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>To create a documentation, run the following command :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sphinx-quickstart docs
+</pre></div>
+</div>
+</section>
+<section id="project-structure">
+<h3>Project Structure<a class="headerlink" href="#project-structure" title="Permalink to this heading">#</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> command creates a new folder docs and populates the folder with specific files.</p>
+<ul class="simple">
+<li><p>Add the following files to your project</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Makefile</span>
+<span class="n">build</span><span class="o">/</span>
+<span class="n">make</span><span class="o">.</span><span class="n">bat</span>
+<span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>    <span class="c1"># add this</span>
+<span class="n">source</span><span class="o">/</span>
+    <span class="n">_ext</span><span class="o">/</span>
+    <span class="n">_static</span><span class="o">/</span>
+        <span class="n">custom</span><span class="o">.</span><span class="n">css</span>  <span class="c1"># add this</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">courses</span><span class="o">/</span>        <span class="c1"># add this</span>
+        <span class="n">index</span><span class="o">.</span><span class="n">rst</span>   <span class="c1"># add this</span>
+        <span class="n">course1</span><span class="o">.</span><span class="n">rst</span> <span class="c1"># add this</span>
+    <span class="n">index</span><span class="o">.</span><span class="n">rst</span>
+</pre></div>
+</div>
+<section id="file-requirements-txt">
+<h4>File <code class="code docutils literal notranslate"><span class="pre">requirements.txt</span></code><a class="headerlink" href="#file-requirements-txt" title="Permalink to this heading">#</a></h4>
+<p>The <cite>requirements.txt</cite> file is important if you want to deploy your documentation automatically on github or collaborate with others. It specifies the python
+librairies used to build your doc.</p>
+<ul class="simple">
+<li><p>Edit the <cite>requirements.txt</cite> file as below</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jinja2</span> <span class="o">&lt;</span> <span class="mf">3.1</span>
+<span class="n">pydata</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">theme</span> <span class="o">&lt;</span> <span class="mf">0.7.3</span>
+<span class="n">numpy</span>   <span class="c1"># if needed</span>
+<span class="n">scipy</span>   <span class="c1"># if needed</span>
+<span class="n">matplotlib</span>  <span class="c1"># if needed</span>
+</pre></div>
+</div>
+</section>
+<section id="file-index-rst">
+<h4>File <code class="code docutils literal notranslate"><span class="pre">index.rst</span></code><a class="headerlink" href="#file-index-rst" title="Permalink to this heading">#</a></h4>
+<p>The <cite>index.rst</cite> files specify the structure of your documentation.</p>
+<ul class="simple">
+<li><p>For the <cite>index.rst</cite> file located in the root folder, add the following content.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. cheatsheet documentation master file, created by
+    sphinx-quickstart on XXX
+    You can adapt this file completely to your liking, but it should at least
+    contain the root `toctree` directive.
+
+Course
+======
+
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+
+    courses/index
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Edit the other <cite>index.rst</cite> file similarly.</p></li>
+</ul>
+</section>
+<section id="file-conf-py">
+<h4>File <code class="code docutils literal notranslate"><span class="pre">conf.py</span></code><a class="headerlink" href="#file-conf-py" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Customize the <cite>conf.py</cite> file as specified below</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf.py</span>
+
+<span class="o">...</span>
+
+<span class="n">html_logo</span> <span class="o">=</span> <span class="s2">&quot;_static/logo.svg&quot;</span>
+
+<span class="o">...</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;pydata_sphinx_theme&quot;</span>
+
+<span class="o">...</span>
+
+<span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;css/custom.css&#39;</span><span class="p">,]</span>
+
+<span class="o">...</span>
+
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;icon_links&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GitHub&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;{{my_github_url}}&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;fab fa-github-square&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build">
+<h3>Build<a class="headerlink" href="#build" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Tu build your documentation, run the following command :</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make html
+</pre></div>
+</div>
+</section>
+</section>
+<section id="github-deployment">
+<h2>Github Deployment<a class="headerlink" href="#github-deployment" title="Permalink to this heading">#</a></h2>
+<p>In the following, I show how to use github workflow to automatically build and host your documentation.</p>
+<section id="id1">
+<h3>Project Structure<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a folder with the following structure</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">git</span>        <span class="c1"># add by git init</span>
+<span class="o">.</span><span class="n">github</span><span class="o">/</span>
+    <span class="n">workflows</span><span class="o">/</span>
+        <span class="n">sphinx</span><span class="o">.</span><span class="n">yml</span>  <span class="c1"># add this</span>
+<span class="o">.</span><span class="n">gitignore</span>  <span class="c1"># add this</span>
+<span class="n">LICENSE</span>     <span class="c1"># add this</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>   <span class="c1"># add this</span>
+<span class="n">docs</span><span class="o">/</span>       <span class="c1"># add your sphinx project here</span>
+</pre></div>
+</div>
+<section id="file-gitignore">
+<h4>File <code class="code docutils literal notranslate"><span class="pre">.gitignore</span></code><a class="headerlink" href="#file-gitignore" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Add a <cite>.gitignore</cite> file in the root folder of your project with the following content</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># sphinx build folder
+build
+docs/build
+
+# tests
+tests
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.c
+
+# Packages #
+############
+# it&#39;s better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+</pre></div>
+</div>
+</section>
+<section id="file-sphinx-yml">
+<h4>File <code class="code docutils literal notranslate"><span class="pre">sphinx.yml</span></code><a class="headerlink" href="#file-sphinx-yml" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>In your <cite>sphinx.yml</cite> file, add the following content. This content allows github to run a new build each time a new push is detected.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name: Sphinx build
+
+on: push
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Build HTML
+        uses: ammaraskar/sphinx-action@0.4
+        - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+            name: html-docs
+            path: docs/build/html/
+        - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == &#39;refs/heads/main&#39;
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: docs/build/html
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, V. Choqueuse.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
