@@ -240,3 +240,13 @@ File :code:`sphinx.yml`
             with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 publish_dir: docs/build/html
+
+Github Configuration
+````````````````````
+
+* In your `github` repo, configure the page hosting 
+
+
+.. image:: img/github.png
+  :width: 100%
+  :alt: Github Configuration

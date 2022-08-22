@@ -8,7 +8,7 @@
 
     <title>Course Website with Sphinx &#8212; personal website  documentation</title>
 <script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
 </script>
 
@@ -44,7 +44,7 @@
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
     <div class="bd-header-announcement container-fluid" id="banner">
       
 
@@ -274,6 +274,11 @@
          sphinx.yml
         </span>
        </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#github-configuration">
+       Github Configuration
       </a>
      </li>
     </ul>
@@ -529,6 +534,13 @@ jobs:
             publish_dir: docs/build/html
 </pre></div>
 </div>
+</section>
+<section id="github-configuration">
+<h4>Github Configuration<a class="headerlink" href="#github-configuration" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>In your <cite>github</cite> repo, configure the page hosting</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/github.png"><img alt="Github Configuration" src="../_images/github.png" style="width: 100%;" /></a>
 </section>
 </section>
 </section>
