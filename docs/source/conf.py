@@ -29,7 +29,6 @@ author = 'V. Choqueuse'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'exercice'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -69,7 +68,6 @@ html_context = {
    "default_mode": "light"
 }
 
-html_extra_path = ['extra']
 plot_include_source = True
 plot_html_show_source_link = False
 plot_html_show_formats = False
