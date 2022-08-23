@@ -150,7 +150,7 @@ Project Structure
 
 .. code ::
 
-    .git        # add by git init
+    .git/        # add by git init automatically
     .github/   
         workflows/
             sphinx.yml  # add this
@@ -159,6 +159,16 @@ Project Structure
     README.md   # add this
     docs/       # add your sphinx project here
 
+File :code:`.git`
+`````````````````
+
+* In the root folder, initialize git tracking using the command 
+
+.. code ::
+
+    $ git init
+
+This command will create the .git folder automatically.
 
 File :code:`.gitignore`
 ```````````````````````
@@ -244,8 +254,9 @@ File :code:`sphinx.yml`
 Github Configuration
 ````````````````````
 
-* In your `github` repo, configure the page hosting 
-
+* Create a new repo on github, 
+* Push your local project on the main branch of the github repo,
+* In your `github` repo, configure the settings according to the above screenshot. 
 
 .. image:: img/github.png
   :width: 100%

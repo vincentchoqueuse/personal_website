@@ -257,6 +257,16 @@
     </a>
     <ul class="visible nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-git">
+       File
+       <code class="code docutils literal notranslate">
+        <span class="pre">
+         .git
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#file-gitignore">
        File
        <code class="code docutils literal notranslate">
@@ -445,7 +455,7 @@ Course
 <ul class="simple">
 <li><p>Create a folder with the following structure</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">git</span>        <span class="c1"># add by git init</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">git</span><span class="o">/</span>        <span class="c1"># add by git init automatically</span>
 <span class="o">.</span><span class="n">github</span><span class="o">/</span>
     <span class="n">workflows</span><span class="o">/</span>
         <span class="n">sphinx</span><span class="o">.</span><span class="n">yml</span>  <span class="c1"># add this</span>
@@ -455,6 +465,16 @@ Course
 <span class="n">docs</span><span class="o">/</span>       <span class="c1"># add your sphinx project here</span>
 </pre></div>
 </div>
+<section id="file-git">
+<h4>File <code class="code docutils literal notranslate"><span class="pre">.git</span></code><a class="headerlink" href="#file-git" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>In the root folder, initialize git tracking using the command</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+</pre></div>
+</div>
+<p>This command will create the .git folder automatically.</p>
+</section>
 <section id="file-gitignore">
 <h4>File <code class="code docutils literal notranslate"><span class="pre">.gitignore</span></code><a class="headerlink" href="#file-gitignore" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -538,7 +558,9 @@ jobs:
 <section id="github-configuration">
 <h4>Github Configuration<a class="headerlink" href="#github-configuration" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
-<li><p>In your <cite>github</cite> repo, configure the page hosting</p></li>
+<li><p>Create a new repo on github,</p></li>
+<li><p>Push your local project on the main branch of the github repo,</p></li>
+<li><p>In your <cite>github</cite> repo, configure the settings according to the above screenshot.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/github.png"><img alt="Github Configuration" src="../_images/github.png" style="width: 100%;" /></a>
 </section>
