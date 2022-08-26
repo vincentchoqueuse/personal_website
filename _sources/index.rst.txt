@@ -15,3 +15,4 @@ V. Choqueuse
    research/index
    tutorials/index
    cheatsheet/index
+   about
