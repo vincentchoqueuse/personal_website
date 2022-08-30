@@ -4,6 +4,7 @@ Publications
 Journals
 --------
 
+* Frunza,  Alexandru; Choqueuse,  Vincent; Morel,  Pascal; Azou,  Stéphane; A Parametric Network for the Global Compensation of Physical Layer Linear Impairments in Coherent Optical Communications, IEEE Open Journal of the Communications Society, 2022, IEEE
 #. Frini,  Marouane; Choqueuse,  Vincent; Auger,  François; , Parametric Tracking of Electrical Current Components Using Gradient Descent Algorithm, Proceedings of the Institution of Mechanical Engineers,  Part C: Journal of Mechanical Engineering Science,  09544062221077822, 2022, SAGE Publications Sage UK: London,  England
 #. Frunza,  Alexandru; Choqueuse,  Vincent; Morel,  Pascal; Azou,  Stéphane; , Global estimation and compensation of linear effects in coherent optical systems based on nonlinear least squares, IEEE Systems Journal, 2021, IEEE
 #. Choqueuse,  Vincent; Granjon,  Pierre; Belouchrani,  Adel; Auger,  François; Benbouzid,  Mohamed; , Monitoring of three-phase signals based on singular-value decomposition, IEEE Transactions on Smart Grid, 10, 6, 6156-6166, 2019, IEEE
