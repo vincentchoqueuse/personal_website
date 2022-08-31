@@ -31,7 +31,7 @@ Il est possible d'installer les librairies scientifiques facilement en utilisant
 
 .. code ::
 
-    $ conda install git numpy scipy matplotlib jupyter seaborn
+    $ conda install numpy scipy matplotlib jupyter seaborn
 
 Pour vérifier que l'installation est correcte, il suffit de lister les paquets python installés sur votre système. 
 
