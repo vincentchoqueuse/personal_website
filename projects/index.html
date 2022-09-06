@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Tikz &#8212; personal website  documentation</title>
+    <title>Projects &#8212; personal website  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -39,8 +39,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown" href="markdown.html" />
-    <link rel="prev" title="Latex" href="latex.html" />
+    <link rel="next" title="STM32 FM Synthesizer" href="FM_synthesizer.html" />
+    <link rel="prev" title="Course Website with Sphinx" href="../tutorials/sphinx_course.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -102,14 +102,14 @@
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../projects/index.html">
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
   Projects
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="index.html">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../cheatsheet/index.html">
   Cheatsheet
  </a>
 </li>
@@ -171,35 +171,10 @@
   Contents:
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python 3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="latex.html">
-   Latex
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tikz
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="django.html">
-   Django
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="git.html">
-   Git
+  <a class="reference internal" href="FM_synthesizer.html">
+   STM32 FM Synthesizer
   </a>
  </li>
 </ul>
@@ -220,38 +195,9 @@
     
     <div class="toc-item">
       
-<div class="tocsection onthispage mt-5 pt-1 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#electrical-circuits">
-   Electrical Circuits
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rc-filter">
-     RC filter
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot">
-   Plot
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bode-diagram">
-     Bode Diagram
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+    
 </nav>
     </div>
     
@@ -269,74 +215,14 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="tikz">
-<h1>Tikz<a class="headerlink" href="#tikz" title="Permalink to this heading">#</a></h1>
-<section id="electrical-circuits">
-<h2>Electrical Circuits<a class="headerlink" href="#electrical-circuits" title="Permalink to this heading">#</a></h2>
-<section id="rc-filter">
-<h3>RC filter<a class="headerlink" href="#rc-filter" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\usepackage{circuitikz}
-
-...
-
-\begin{tikzpicture}
-    \draw (0,0)
-    to[R, l=$R$,-] (3,0)
-    to[C, l=$C$, *-] (3,-2)
-    to[short](3,-2)   node [ground] {};
-    %input
-    \draw (-0.5,0)
-    to[short, l_=$V_{in}$](-0.5,-2)   node [ground] {};
-    \draw (-0.5,0) coordinate[inputarrow,rotate=90];
-    % output
-    \draw (4,0)
-    to[short, l=$V_{out}$](4,-2)   node [ground] {};
-    \draw (4,0) coordinate[inputarrow,rotate=90];
-\end{tikzpicture}
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>List of circuits: <a class="reference external" href="https://github.com/vincentchoqueuse/analog_circuits_tikz">https://github.com/vincentchoqueuse/analog_circuits_tikz</a></p></li>
+  <section id="projects">
+<h1>Projects<a class="headerlink" href="#projects" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FM_synthesizer.html">STM32 FM Synthesizer</a></li>
 </ul>
-</section>
-</section>
-<section id="plot">
-<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h2>
-<section id="bode-diagram">
-<h3>Bode Diagram<a class="headerlink" href="#bode-diagram" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{caption}
-\usepackage{subcaption}
-
-...
-
-\begin{figure}
-\centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \begin{loglogaxis}[xlabel=$\omega$, ylabel={$|H(j\omega)|$},xmin=1, xmax=100000,ymin=0.01, grid=both]
-            \addplot[domain=1:100000, red, thick]{0.333*(sqrt(4e-06*x*x +1))/sqrt(4.444e-07*x*x +1)};
-            \end{loglogaxis}
-        \end{tikzpicture}
-        \caption{Module}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \begin{semilogxaxis}[xlabel=$\omega$, ylabel={$\arg[H(j\omega)]$},xmin=1, xmax=100000,ymin=0, ymax=60, grid=both]
-            \addplot[domain=1:100000, red, thick]{atan(0.002*x)-atan(0.00066*x)};
-            \end{semilogxaxis}
-        \end{tikzpicture}
-        \caption{Argument}
-    \end{subfigure}
-\caption{Diagramme de Bode}
-\end{figure}
-</pre></div>
 </div>
-</section>
-</section>
 </section>
 
 

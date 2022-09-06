@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Tikz &#8212; personal website  documentation</title>
+    <title>STM32 FM Synthesizer &#8212; personal website  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -36,11 +36,12 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown" href="markdown.html" />
-    <link rel="prev" title="Latex" href="latex.html" />
+    <link rel="next" title="Cheatsheet" href="../cheatsheet/index.html" />
+    <link rel="prev" title="Projects" href="index.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -102,14 +103,14 @@
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../projects/index.html">
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
   Projects
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="index.html">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../cheatsheet/index.html">
   Cheatsheet
  </a>
 </li>
@@ -172,34 +173,9 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   Python 3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="latex.html">
-   Latex
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tikz
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="django.html">
-   Django
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="git.html">
-   Git
+   STM32 FM Synthesizer
   </a>
  </li>
 </ul>
@@ -227,28 +203,26 @@
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#electrical-circuits">
-   Electrical Circuits
+  <a class="reference internal nav-link" href="#context">
+   Context
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rc-filter">
-     RC filter
+    <a class="reference internal nav-link" href="#specifications">
+     Specifications
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot">
-   Plot
+  <a class="reference internal nav-link" href="#methodology">
+   Methodology
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bode-diagram">
-     Bode Diagram
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
  </li>
 </ul>
 
@@ -269,73 +243,76 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="tikz">
-<h1>Tikz<a class="headerlink" href="#tikz" title="Permalink to this heading">#</a></h1>
-<section id="electrical-circuits">
-<h2>Electrical Circuits<a class="headerlink" href="#electrical-circuits" title="Permalink to this heading">#</a></h2>
-<section id="rc-filter">
-<h3>RC filter<a class="headerlink" href="#rc-filter" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\usepackage{circuitikz}
-
-...
-
-\begin{tikzpicture}
-    \draw (0,0)
-    to[R, l=$R$,-] (3,0)
-    to[C, l=$C$, *-] (3,-2)
-    to[short](3,-2)   node [ground] {};
-    %input
-    \draw (-0.5,0)
-    to[short, l_=$V_{in}$](-0.5,-2)   node [ground] {};
-    \draw (-0.5,0) coordinate[inputarrow,rotate=90];
-    % output
-    \draw (4,0)
-    to[short, l=$V_{out}$](4,-2)   node [ground] {};
-    \draw (4,0) coordinate[inputarrow,rotate=90];
-\end{tikzpicture}
-</pre></div>
-</div>
+  <section id="stm32-fm-synthesizer">
+<h1>STM32 FM Synthesizer<a class="headerlink" href="#stm32-fm-synthesizer" title="Permalink to this heading">#</a></h1>
+<p>The goal of this project is to implement a FM (Frequency Modulation) sound synthesizer using the STM32F4 Discovery and/or the STM32L476G Discovery</p>
+<section id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h2>
+<p>The foundation of the FM synthesis has been patented by John Chowning at Stanford University in 1974 (see <a class="reference external" href="https://patents.google.com/patent/US4018121A/en">Patent</a> )
+One of the most famous synthesizer using this technique is the Yamaha DX7, that was manufactured by the Yamaha Corporation from 1983 to 1989. The DX7 is one of the best-selling synthesizers in history, selling more than 200,000 units.</p>
+<img alt="The DX7 Synthesizer" src="../_images/DX7.jpg" />
+<section id="specifications">
+<h3>Specifications<a class="headerlink" href="#specifications" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>List of circuits: <a class="reference external" href="https://github.com/vincentchoqueuse/analog_circuits_tikz">https://github.com/vincentchoqueuse/analog_circuits_tikz</a></p></li>
+<li><p>Six phase-modulated oscillators :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[x_p(t) = a_p \sin(2\pi f_p t + \varphi_p + I_p x_q(t) )\]</div>
+<p>In musical application, this signal model has the advantage of generating complex sounds. While the
+addition of two sine waves only contains 4 frequency components (positive and negative frequencies), a FM modulated sine wave can generate
+many frequency components whose amplitudes are determined by Bessel functions.</p>
+<ul class="simple">
+<li><p>Oscillators can be combined in different ways (32 algorithms). Each algorithm specify is an oscillator acts like a carrier or modulated signal.</p></li>
+</ul>
+<img alt="The DX7 Algorithms" src="../_images/DX7_algorithms.jpg" />
+<ul class="simple">
+<li><p>Seven 6-points envelopes (one for each sine and one for the pitch)</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/FM_synthesizer-1.png" class="plot-directive" src="../_images/FM_synthesizer-1.png" />
+</figure>
+</section>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Communication between a MIDI keyboard and one of the USB port of the STM32F4</dt><dd><ul>
+<li><p>Extraction of the note ON / note OFF messages</p></li>
+<li><p>Extraction of the Control Change messages.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Implementation of the sound synthesizer</dt><dd><ul>
+<li><p>Generation of a sine wave oscillator, implementation of phase modulation,</p></li>
+<li><p>Generation of the signal enveloppe (see <a class="reference external" href="https://youtu.be/Awju9PI8Spc?t=368">Video</a> ),</p></li>
+<li><p>Implementation of the 32 DX7 algorithms.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Implementation of some presets</dt><dd><ul>
+<li><p>Reverse engineering of some classical DX7 presets (pad sounds, bass sounds, rhodes sounds).</p></li>
+<li><p>Integration of preset selection features (communications ? Midi message ?)</p></li>
+<li><p>(Create a simple app to easily edit the DX7 parameters.)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </section>
-</section>
-<section id="plot">
-<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h2>
-<section id="bode-diagram">
-<h3>Bode Diagram<a class="headerlink" href="#bode-diagram" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{caption}
-\usepackage{subcaption}
-
-...
-
-\begin{figure}
-\centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \begin{loglogaxis}[xlabel=$\omega$, ylabel={$|H(j\omega)|$},xmin=1, xmax=100000,ymin=0.01, grid=both]
-            \addplot[domain=1:100000, red, thick]{0.333*(sqrt(4e-06*x*x +1))/sqrt(4.444e-07*x*x +1)};
-            \end{loglogaxis}
-        \end{tikzpicture}
-        \caption{Module}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \begin{semilogxaxis}[xlabel=$\omega$, ylabel={$\arg[H(j\omega)]$},xmin=1, xmax=100000,ymin=0, ymax=60, grid=both]
-            \addplot[domain=1:100000, red, thick]{atan(0.002*x)-atan(0.00066*x)};
-            \end{semilogxaxis}
-        \end{tikzpicture}
-        \caption{Argument}
-    \end{subfigure}
-\caption{Diagramme de Bode}
-\end{figure}
-</pre></div>
-</div>
-</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A sound synthesizer STM32 project: <a class="reference external" href="https://github.com/MrBlueXav/Dekrispator_v2">https://github.com/MrBlueXav/Dekrispator_v2</a></p></li>
+<li><p>DX7 Manual: <a class="reference external" href="http://dxsysex.com/doc/DX7SE.pdf">http://dxsysex.com/doc/DX7SE.pdf</a></p></li>
+<li><p>Origin of the DX7 and FM Synthesis: <a class="reference external" href="https://youtu.be/sXt_NXjc7oY">https://youtu.be/sXt_NXjc7oY</a></p></li>
+<li><p>List of classical super Kitch DX7 presets: <a class="reference external" href="https://www.youtube.com/watch?v=BCwn26FePAo">https://www.youtube.com/watch?v=BCwn26FePAo</a></p></li>
+<li><p>Top Gun Music using the DX7: <a class="reference external" href="https://fr.audiofanzine.com/synthetiseur-rack/editorial/dossiers/on-refait-le-son-de-top-gun.html">https://fr.audiofanzine.com/synthetiseur-rack/editorial/dossiers/on-refait-le-son-de-top-gun.html</a></p></li>
+</ul>
 </section>
 </section>
 
