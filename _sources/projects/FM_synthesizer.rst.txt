@@ -68,8 +68,11 @@ many frequency components whose amplitudes are determined by Bessel functions.
     plt.text(0.85, 0.3, "Note Off", fontsize=12)
 
 
-Methodology
------------
+Project 
+-------
+
+Functionalities 
++++++++++++++++
 
 * Communication between a MIDI keyboard and one of the USB port of the STM32F4
     * Extraction of the note ON / note OFF messages
@@ -86,6 +89,14 @@ Methodology
     * Integration of preset selection features (communications ? Midi message ?)
     * (Create a simple app to easily edit the DX7 parameters.)
 
+Tools
++++++
+
+- The project will be hosted on Gitlab with internal visibility.
+    * Code collaboration
+    * Documentation on the Wiki
+
+
 References
 ----------
 
@@ -94,3 +105,8 @@ References
 - Origin of the DX7 and FM Synthesis: https://youtu.be/sXt_NXjc7oY
 - List of classical super Kitch DX7 presets: https://www.youtube.com/watch?v=BCwn26FePAo
 - Top Gun Music using the DX7: https://fr.audiofanzine.com/synthetiseur-rack/editorial/dossiers/on-refait-le-son-de-top-gun.html
+
+
+.. image:: img/project1.png
+    :align: center
+    :width: 200
