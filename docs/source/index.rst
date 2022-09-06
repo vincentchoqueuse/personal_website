@@ -14,5 +14,6 @@ V. Choqueuse
    courses/index
    research/index
    tutorials/index
+   projects/index
    cheatsheet/index
    about

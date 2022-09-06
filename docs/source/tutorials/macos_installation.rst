@@ -45,3 +45,29 @@ Editeur de Code
 Pour éditer du code, je recommande l'utilisation de Vscode 
 
 * Téléchargez Vscode et installez le: https://code.visualstudio.com/download 
+
+
+Installation des outils de développement
+----------------------------------------
+
+Brew
+++++
+
+Brew est un gestionnaire de paquet pour macOS. Il permet d'installer rapidement des outils à partir du terminal 
+
+Installation 
+`````````````
+
+.. code ::
+
+    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+Verification
+````````````
+
+Une fois l'installation réalisée, il est possible de verifier que l'installation est bien fonctionnelle en lançant la commande suivante
+
+.. code ::
+
+    $ 
