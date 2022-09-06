@@ -11,6 +11,11 @@ One of the most famous synthesizer using this technique is the Yamaha DX7, that 
 
 .. image:: img/DX7.jpg
     :alt: The DX7 Synthesizer
+    
+Some super Kitch presets can be heard here: https://www.youtube.com/watch?v=BCwn26FePAo
+
+Project 
+-------
 
 Specifications
 ++++++++++++++
@@ -23,7 +28,31 @@ Specifications
 
 In musical application, this signal model has the advantage of generating complex sounds. While the 
 addition of two sine waves only contains 4 frequency components (positive and negative frequencies), a FM modulated sine wave can generate 
-many frequency components whose amplitudes are determined by Bessel functions.
+many frequency components whose amplitudes are governed by Bessel functions.
+
+.. plot :: 
+    :include-source: false
+
+    from numpy.fft import fft, fftfreq
+    import numpy as np 
+    import matplotlib.pyplot as plt
+
+    Fe = 10000
+    t = np.arange(0, 1, 1/Fe)
+    y = np.sin(2*np.pi*100*t+0.5*5*np.sin(2*np.pi*20*t))
+    plt.plot(t, y)
+    plt.xlim([0, 0.2])
+    plt.xlabel("t [s]")
+    plt.ylabel("Amplitude")
+
+    plt.figure()
+    ffty = fft(y)
+    freq = fftfreq(len(ffty), 1/Fe)
+    plt.plot(freq, np.abs(ffty))
+    plt.xlabel("f [Hz]")
+    plt.ylabel("Module")
+    plt.xlim([-200, 200])
+
 
 * Oscillators can be combined in different ways (32 algorithms). Each algorithm specify is an oscillator acts like a carrier or modulated signal.
 
@@ -68,8 +97,7 @@ many frequency components whose amplitudes are determined by Bessel functions.
     plt.text(0.85, 0.3, "Note Off", fontsize=12)
 
 
-Project 
--------
+
 
 Functionalities 
 +++++++++++++++
@@ -94,8 +122,6 @@ Tools
 
 - The synthesizer will be implemented on the `STM32F407G <https://www.st.com/en/evaluation-tools/stm32f4discovery.html>`_ .
 
-FM_STM32
-
 .. image:: img/DX7_STM32.jpg
     :align: center
     :width: 300
@@ -109,7 +135,6 @@ References
 - A sound synthesizer STM32 project: https://github.com/MrBlueXav/Dekrispator_v2
 - DX7 Manual: http://dxsysex.com/doc/DX7SE.pdf
 - Origin of the DX7 and FM Synthesis: https://youtu.be/sXt_NXjc7oY
-- List of classical super Kitch DX7 presets: https://www.youtube.com/watch?v=BCwn26FePAo
 - Top Gun Music using the DX7: https://fr.audiofanzine.com/synthetiseur-rack/editorial/dossiers/on-refait-le-son-de-top-gun.html
 
 

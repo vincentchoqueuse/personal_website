@@ -206,19 +206,17 @@
   <a class="reference internal nav-link" href="#context">
    Context
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#specifications">
-     Specifications
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#project">
    Project
   </a>
   <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifications">
+     Specifications
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#functionalities">
      Functionalities
@@ -263,6 +261,10 @@
 <p>The foundation of the FM synthesis has been patented by John Chowning at Stanford University in 1974 (see <a class="reference external" href="https://patents.google.com/patent/US4018121A/en">Patent</a> )
 One of the most famous synthesizer using this technique is the Yamaha DX7, that was manufactured by the Yamaha Corporation from 1983 to 1989. The DX7 is one of the best-selling synthesizers in history, selling more than 200,000 units.</p>
 <img alt="The DX7 Synthesizer" src="../_images/DX7.jpg" />
+<p>Some super Kitch presets can be heard here: <a class="reference external" href="https://www.youtube.com/watch?v=BCwn26FePAo">https://www.youtube.com/watch?v=BCwn26FePAo</a></p>
+</section>
+<section id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this heading">#</a></h2>
 <section id="specifications">
 <h3>Specifications<a class="headerlink" href="#specifications" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -272,7 +274,13 @@ One of the most famous synthesizer using this technique is the Yamaha DX7, that 
 \[x_p(t) = a_p \sin(2\pi f_p t + \varphi_p + I_p x_q(t) )\]</div>
 <p>In musical application, this signal model has the advantage of generating complex sounds. While the
 addition of two sine waves only contains 4 frequency components (positive and negative frequencies), a FM modulated sine wave can generate
-many frequency components whose amplitudes are determined by Bessel functions.</p>
+many frequency components whose amplitudes are governed by Bessel functions.</p>
+<figure class="align-default">
+<img alt="../_images/FM_synthesizer-1_00.png" class="plot-directive" src="../_images/FM_synthesizer-1_00.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/FM_synthesizer-1_01.png" class="plot-directive" src="../_images/FM_synthesizer-1_01.png" />
+</figure>
 <ul class="simple">
 <li><p>Oscillators can be combined in different ways (32 algorithms). Each algorithm specify is an oscillator acts like a carrier or modulated signal.</p></li>
 </ul>
@@ -281,12 +289,9 @@ many frequency components whose amplitudes are determined by Bessel functions.</
 <li><p>Seven 6-points envelopes (one for each sine and one for the pitch)</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/FM_synthesizer-1.png" class="plot-directive" src="../_images/FM_synthesizer-1.png" />
+<img alt="../_images/FM_synthesizer-2.png" class="plot-directive" src="../_images/FM_synthesizer-2.png" />
 </figure>
 </section>
-</section>
-<section id="project">
-<h2>Project<a class="headerlink" href="#project" title="Permalink to this heading">#</a></h2>
 <section id="functionalities">
 <h3>Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -323,7 +328,6 @@ many frequency components whose amplitudes are determined by Bessel functions.</
 <ul class="simple">
 <li><p>The synthesizer will be implemented on the <a class="reference external" href="https://www.st.com/en/evaluation-tools/stm32f4discovery.html">STM32F407G</a> .</p></li>
 </ul>
-<p>FM_STM32</p>
 <a class="reference internal image-reference" href="../_images/DX7_STM32.jpg"><img alt="../_images/DX7_STM32.jpg" class="align-center" src="../_images/DX7_STM32.jpg" style="width: 300px;" /></a>
 <ul class="simple">
 <li><p>The project will be hosted on Gitlab with internal visibility (Code, Documentation on the Wiki)</p></li>
@@ -336,7 +340,6 @@ many frequency components whose amplitudes are determined by Bessel functions.</
 <li><p>A sound synthesizer STM32 project: <a class="reference external" href="https://github.com/MrBlueXav/Dekrispator_v2">https://github.com/MrBlueXav/Dekrispator_v2</a></p></li>
 <li><p>DX7 Manual: <a class="reference external" href="http://dxsysex.com/doc/DX7SE.pdf">http://dxsysex.com/doc/DX7SE.pdf</a></p></li>
 <li><p>Origin of the DX7 and FM Synthesis: <a class="reference external" href="https://youtu.be/sXt_NXjc7oY">https://youtu.be/sXt_NXjc7oY</a></p></li>
-<li><p>List of classical super Kitch DX7 presets: <a class="reference external" href="https://www.youtube.com/watch?v=BCwn26FePAo">https://www.youtube.com/watch?v=BCwn26FePAo</a></p></li>
 <li><p>Top Gun Music using the DX7: <a class="reference external" href="https://fr.audiofanzine.com/synthetiseur-rack/editorial/dossiers/on-refait-le-son-de-top-gun.html">https://fr.audiofanzine.com/synthetiseur-rack/editorial/dossiers/on-refait-le-son-de-top-gun.html</a></p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/project1.png"><img alt="../_images/project1.png" class="align-center" src="../_images/project1.png" style="width: 200px;" /></a>
