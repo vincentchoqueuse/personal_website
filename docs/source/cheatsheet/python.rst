@@ -179,7 +179,7 @@ Operator :code:`or`
      - :code:`False`
 
 Operator :code:`not`
-```````````````````
+`````````````````````
 .. list-table::
    :widths: 25 75
    :header-rows: 1
