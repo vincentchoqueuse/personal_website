@@ -1,7 +1,7 @@
 STM32 FM Synthesizer 
 ====================
 
-The goal of this project is to implement a FM (Frequency Modulation) sound synthesizer using the STM32F4 Discovery.
+The goal of this project is to implement a FM (Frequency Modulation) sound synthesizer using the STM32F407 Discovery.
 
 Context 
 -------
@@ -117,14 +117,16 @@ Functionalities
     * Integration of preset selection features (communications ? Midi message ?)
     * (Create a simple app to easily edit the DX7 parameters.)
 
-Tools
-+++++
+Hardware / Sofware
+++++++++++++++++++
 
-- The synthesizer will be implemented on the `STM32F407G <https://www.st.com/en/evaluation-tools/stm32f4discovery.html>`_ .
+- The synthesizer will be implemented on the `STM32F407 <https://www.st.com/en/evaluation-tools/stm32f4discovery.html>`_ .
 
 .. image:: img/DX7_STM32.jpg
     :align: center
     :width: 300
+
+- MIDI informations will be sent by a MIDI Keyboard.
 
 - The project will be hosted on Gitlab with internal visibility (Code, Documentation on the Wiki)
 
