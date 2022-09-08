@@ -250,9 +250,26 @@
        Installation
       </a>
      </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#programmation-en-c">
+     Programmation en C
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#programmation-sur-stm32">
+     Programmation sur STM32
+    </a>
+    <ul class="visible nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#verification">
-       Verification
+      <a class="reference internal nav-link" href="#gcc-arm-embedded-toolchain">
+       GCC ARM Embedded Toolchain
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#open-ocd">
+       Open OCD
       </a>
      </li>
     </ul>
@@ -297,7 +314,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda
 </pre></div>
 </div>
-<p>Si tout s’est bien passé, la commande doit renvoyer la documentation de <cite>conda</cite> dans le terminal.</p>
+<p>Si l’installation s’est bien passée, le lancement de la commande <code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> doit vous afficher la version de conda installée dans le système.</p>
 <section id="librairies-python">
 <h4>Librairies Python<a class="headerlink" href="#librairies-python" title="Permalink to this heading">#</a></h4>
 <p>De base miniconda ne contient qu’un ensemble réduit de librairies Python (lancer la commande <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> pour connaître les paquets installés).
@@ -305,10 +322,7 @@ Il est possible d’installer les librairies scientifiques facilement en utilisa
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install numpy scipy matplotlib jupyter seaborn
 </pre></div>
 </div>
-<p>Pour vérifier que l’installation est correcte, il suffit de lister les paquets python installés sur votre système.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip list
-</pre></div>
-</div>
+<p>Si l’installation s’est bien passée, le lancement de la commande <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> doit vous afficher la liste des paquets python installés.</p>
 </section>
 </section>
 </section>
@@ -330,10 +344,48 @@ Il est possible d’installer les librairies scientifiques facilement en utilisa
 </pre></div>
 </div>
 </section>
-<section id="verification">
-<h4>Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h4>
-<p>Une fois l’installation réalisée, il est possible de verifier que l’installation est bien fonctionnelle en lançant la commande suivante</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$
+</section>
+<section id="programmation-en-c">
+<h3>Programmation en C<a class="headerlink" href="#programmation-en-c" title="Permalink to this heading">#</a></h3>
+<p>Pour coder en C, il faut un compilateur comme <cite>gcc</cite>. Pour voir si <cite>gcc</cite> est installé sur votre système, lancez simplement la commande</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gcc
+</pre></div>
+</div>
+<p>Si le compilateur n’est pas trouvé, macOS vous proposera d’installer les Command Line Tools de XCode (contenant gcc) automatiquement. Si l’installation n’est pas proposée automatiquement,
+vous pouvez les installer en lançant la commande</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xcode-select --install
+</pre></div>
+</div>
+</section>
+<section id="programmation-sur-stm32">
+<h3>Programmation sur STM32<a class="headerlink" href="#programmation-sur-stm32" title="Permalink to this heading">#</a></h3>
+<section id="gcc-arm-embedded-toolchain">
+<h4>GCC ARM Embedded Toolchain<a class="headerlink" href="#gcc-arm-embedded-toolchain" title="Permalink to this heading">#</a></h4>
+<p>Pour pouvoir compiler du code pour les STM32, il faut installer le GCC ARM Embedded Toolchain.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ brew install homebrew/cask/gcc-arm-embedded
+</pre></div>
+</div>
+<p>Si l’installation s’est bien passée, le lancement de la commande <code class="code docutils literal notranslate"><span class="pre">arm-none-eabi-gcc</span> <span class="pre">--version</span></code> doit afficher le message suivant :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ arm-none-eabi-gcc --version
+arm-none-eabi-gcc (GNU Tools for Arm Embedded Processors 7-2017-q4-major) 7.2.1 20170904 (release) [ARM/embedded-7-branch revision 255204]
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</pre></div>
+</div>
+</section>
+<section id="open-ocd">
+<h4>Open OCD<a class="headerlink" href="#open-ocd" title="Permalink to this heading">#</a></h4>
+<p>Pour pouvoir debugger les programmes, il faut installer un debugger comme OpenOCD.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ brew install openocd
+</pre></div>
+</div>
+<p>Si l’installation s’est bien passée, le lancement de la commande <code class="code docutils literal notranslate"><span class="pre">openOCD</span> <span class="pre">--version</span></code> doit afficher le message suivant :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ openOCD --version
+Open On-Chip Debugger 0.10.0
+Licensed under GNU GPL v2
+For bug reports, read
+    http://openocd.org/doc/doxygen/bugs.html
 </pre></div>
 </div>
 </section>
