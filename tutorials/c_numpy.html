@@ -37,7 +37,6 @@
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -257,8 +256,8 @@ Note that this computation can be performed using the Numpy function <code class
 this function in pure C.</p>
 <section id="implement-your-c-function">
 <h2>Implement your C function<a class="headerlink" href="#implement-your-c-function" title="Permalink to this heading">#</a></h2>
-<p>First, we need to create a <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code> file with a single function called <span class="math notranslate nohighlight">\(my_cos\)</span>. The
-<span class="math notranslate nohighlight">\(my_cos\)</span> function contains a for loop function to compute the cosine for each element of an input array <code class="code docutils literal notranslate"><span class="pre">*in_array</span></code>.</p>
+<p>First, we need to create a <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code> file with a single function called <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code>. The
+<code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> function contains a for loop function to compute the cosine for each element of an input array <code class="code docutils literal notranslate"><span class="pre">*in_array</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">my_cos</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">in_array</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out_array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">){</span><span class="w"></span>
