@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Call C function in Python &#8212; personal website  documentation</title>
+    <title>Calling a C function from Python &#8212; personal website  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -191,7 +191,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Call C function in Python
+   Calling a C function from Python
   </a>
  </li>
 </ul>
@@ -247,13 +247,18 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="call-c-function-in-python">
-<h1>Call C function in Python<a class="headerlink" href="#call-c-function-in-python" title="Permalink to this heading">#</a></h1>
-<p>In this tutorial, I show how to create a C function and how to call it from Python. More specifically, I create a function
-to compute the cosine value for each element of a <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> array.</p>
+  <section id="calling-a-c-function-from-python">
+<h1>Calling a C function from Python<a class="headerlink" href="#calling-a-c-function-from-python" title="Permalink to this heading">#</a></h1>
+<p>In this tutorial, I show how to create a C function and how to call it from Python.
+This case arises in situations where we want to analyse the output of a C function using python modules such as Numpy or
+matplotlib. In particular, this approach can help you to debug your signal processing algorithms.</p>
+<p>In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> array.
+Note that this computation can be performed using the numpy function <code class="code docutils literal notranslate"><span class="pre">cos</span></code> directly, but for the sake of illustration, we will implement
+the cos function in pure C.</p>
 <section id="c-code">
 <h2>C Code<a class="headerlink" href="#c-code" title="Permalink to this heading">#</a></h2>
-<p>First, we need to create a <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code> file with a single function called <span class="math notranslate nohighlight">\(my_cos\)</span>.</p>
+<p>First, we need to create a <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code> file with a single function called <span class="math notranslate nohighlight">\(my_cos\)</span>. The
+<span class="math notranslate nohighlight">\(my_cos\)</span> function contains a for loop function to compute the cosine for each element of an input array <code class="code docutils literal notranslate"><span class="pre">*in_array</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">my_cos</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">in_array</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out_array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">){</span><span class="w"></span>
@@ -264,46 +269,51 @@ to compute the cosine value for each element of a <code class="code docutils lit
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then, we need to create a share library by running the following command in your terminal</p>
+<p>Then, we need to create a shared library by running the following command in your terminal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gcc -fPIC -shared my_lib.c -o my_lib.so
 </pre></div>
 </div>
-<p>This command must create a file called <code class="code docutils literal notranslate"><span class="pre">my_lib.so</span></code></p>
+<p>This command creates a file called <code class="code docutils literal notranslate"><span class="pre">my_lib.so</span></code></p>
 </section>
 <section id="calling-your-function">
 <h2>Calling your function<a class="headerlink" href="#calling-your-function" title="Permalink to this heading">#</a></h2>
-<p>To call your function, we need to import the library / function using the module <code class="code docutils literal notranslate"><span class="pre">ctypes</span></code>. In the following code, I
-create a instantaneous phase vector and call the C function <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> to compute the cosinus for each element.
-The output array is then plotted using matplotlib.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">import</span><span class="w"> </span><span class="n">ctypes</span><span class="w"></span>
-<span class="n">import</span><span class="w"> </span><span class="n">numpy</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">np</span><span class="w"></span>
-<span class="n">from</span><span class="w"> </span><span class="n">numpy</span><span class="p">.</span><span class="n">ctypeslib</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">ndpointer</span><span class="w"></span>
-<span class="n">import</span><span class="w"> </span><span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="w"></span>
+<p>To call our function, we need to create a python script called <code class="code docutils literal notranslate"><span class="pre">show_sine.py</span></code>. In this python script, we import the C library / function using the module <code class="code docutils literal notranslate"><span class="pre">ctypes</span></code>.
+Specifically, this script creates an instantaneous phase vector <code class="code docutils literal notranslate"><span class="pre">phase</span></code>, and calls the C function <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> to compute the cosinus for each element of this vector.
+The output array is then plotted using the <code class="code docutils literal notranslate"><span class="pre">matplotlib</span></code> module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.ctypeslib</span> <span class="kn">import</span> <span class="n">ndpointer</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="cp"># import C function</span>
-<span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctypes</span><span class="p">.</span><span class="n">cdll</span><span class="p">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="s">&quot;./my_lib.so&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="n">my_cos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="p">.</span><span class="n">my_cos</span><span class="w"></span>
-<span class="n">my_cos</span><span class="p">.</span><span class="n">restype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="w"></span>
-<span class="n">my_cos</span><span class="p">.</span><span class="n">argtypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">ctypes</span><span class="p">.</span><span class="n">c_double</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;C_CONTIGUOUS&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">                </span><span class="n">ndpointer</span><span class="p">(</span><span class="n">ctypes</span><span class="p">.</span><span class="n">c_double</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;C_CONTIGUOUS&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">                </span><span class="n">ctypes</span><span class="p">.</span><span class="n">c_size_t</span><span class="p">]</span><span class="w"></span>
+<span class="c1"># import C function</span>
+<span class="n">lib</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cdll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="s2">&quot;./my_lib.so&quot;</span><span class="p">)</span>
+<span class="n">my_cos</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">my_cos</span>
+<span class="n">my_cos</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">my_cos</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s2">&quot;C_CONTIGUOUS&quot;</span><span class="p">),</span>
+                <span class="n">ndpointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s2">&quot;C_CONTIGUOUS&quot;</span><span class="p">),</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">c_size_t</span><span class="p">]</span>
 
-<span class="cp"># create a nd array</span>
-<span class="n">Fe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">Fe</span><span class="p">)</span><span class="w"></span>
-<span class="n">phase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="w"></span>
+<span class="c1"># create a nd array</span>
+<span class="n">Fe</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fe</span><span class="p">)</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span>
 
-<span class="cp"># allocate arguments and call the C function</span>
-<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"></span>
-<span class="n">out_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="w"></span>
-<span class="n">my_cos</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span><span class="w"> </span><span class="n">out_data</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"></span>
+<span class="c1"># allocate arguments and call the C function</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">out_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">my_cos</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">out_data</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
 
-<span class="cp"># plot the result</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">out_data</span><span class="p">)</span><span class="w"></span>
-<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;time [s]&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span><span class="w"></span>
+<span class="c1"># plot the result</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">out_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time [s]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>Finally, we can run our python script using the following command :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python show_sine.py
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="tutorials/img/c_numpy.png"><img alt="Output of the show_sine.py script" src="tutorials/img/c_numpy.png" style="width: 100%;" /></a>
 </section>
 </section>
 
