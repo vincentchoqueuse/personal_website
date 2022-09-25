@@ -12,8 +12,8 @@ this function in pure C.
 Implement your C function 
 -------------------------
 
-First, we need to create a :code:`my_lib.c` file with a single function called :math:`my_cos`. The 
-:math:`my_cos` function contains a for loop function to compute the cosine for each element of an input array :code:`*in_array`.
+First, we need to create a :code:`my_lib.c` file with a single function called :code:`my_cos`. The 
+:code:`my_cos` function contains a for loop function to compute the cosine for each element of an input array :code:`*in_array`.
 
 .. code :: c
 
