@@ -1,16 +1,16 @@
 Calling a C function from Python
 ==============================
 
-In this tutorial, I show how to create a C function and how to call it from Python. 
-This case arises in situations where we want to analyse the output of a C function using python modules such as Numpy or 
-matplotlib. In particular, this approach can help you to debug your signal processing algorithms. 
+This tutorial shows how to create a C function and call it from Python. 
+This case arises when we want to analyse the output of a C function using python modules such as Numpy or 
+Matplotlib. For example, this approach can help you to debug low-level signal processing algorithms. 
 
-In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a :code:`numpy` array.
-Note that this computation can be performed using the numpy function :code:`cos` directly, but for the sake of illustration, we will implement 
-the cos function in pure C.
+In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a :code:`Numpy` array.
+Note that this computation can be performed using the Numpy function :code:`cos` directly, but for the sake of illustration, we will implement 
+this function in pure C.
 
-C Code 
-------
+Implement your C function 
+-------------------------
 
 First, we need to create a :code:`my_lib.c` file with a single function called :math:`my_cos`. The 
 :math:`my_cos` function contains a for loop function to compute the cosine for each element of an input array :code:`*in_array`.
@@ -26,7 +26,7 @@ First, we need to create a :code:`my_lib.c` file with a single function called :
         }
     }
 
-Then, we need to create a shared library by running the following command in your terminal
+Then, we need to create a shared library by running the following command in your terminal.
 
 .. code ::
 
@@ -37,8 +37,8 @@ This command creates a file called :code:`my_lib.so`
 Calling your function 
 ---------------------
 
-To call our function, we need to create a python script called :code:`show_sine.py`. In this python script, we import the C library / function using the module :code:`ctypes`. 
-Specifically, this script creates an instantaneous phase vector :code:`phase`, and calls the C function :code:`my_cos` to compute the cosinus for each element of this vector.
+To call our function, we need to create a python script called :code:`show_sine.py`.
+Specifically, this script imports the C library / function using the module :code:`ctypes`, creates an instantaneous phase vector :code:`phase`, and calls the C function :code:`my_cos` to compute the cosine for each element of this vector.
 The output array is then plotted using the :code:`matplotlib` module.
 
 .. code ::
@@ -71,12 +71,12 @@ The output array is then plotted using the :code:`matplotlib` module.
     plt.xlabel("time [s]")
     plt.show()
 
-Finally, we can run our python script using the following command :
+Finally, we can run our python script using the following command.
 
 .. code ::
 
     $ python show_sine.py
 
-.. image:: img/c_numpy.png
+.. image:: img/c_numpy.jpg
   :width: 100%
   :alt: Output of the show_sine.py script

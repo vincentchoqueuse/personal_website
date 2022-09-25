@@ -219,8 +219,8 @@
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#c-code">
-   C Code
+  <a class="reference internal nav-link" href="#implement-your-c-function">
+   Implement your C function
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -249,14 +249,14 @@
                 
   <section id="calling-a-c-function-from-python">
 <h1>Calling a C function from Python<a class="headerlink" href="#calling-a-c-function-from-python" title="Permalink to this heading">#</a></h1>
-<p>In this tutorial, I show how to create a C function and how to call it from Python.
-This case arises in situations where we want to analyse the output of a C function using python modules such as Numpy or
-matplotlib. In particular, this approach can help you to debug your signal processing algorithms.</p>
-<p>In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> array.
-Note that this computation can be performed using the numpy function <code class="code docutils literal notranslate"><span class="pre">cos</span></code> directly, but for the sake of illustration, we will implement
-the cos function in pure C.</p>
-<section id="c-code">
-<h2>C Code<a class="headerlink" href="#c-code" title="Permalink to this heading">#</a></h2>
+<p>This tutorial shows how to create a C function and call it from Python.
+This case arises when we want to analyse the output of a C function using python modules such as Numpy or
+Matplotlib. For example, this approach can help you to debug low-level signal processing algorithms.</p>
+<p>In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a <code class="code docutils literal notranslate"><span class="pre">Numpy</span></code> array.
+Note that this computation can be performed using the Numpy function <code class="code docutils literal notranslate"><span class="pre">cos</span></code> directly, but for the sake of illustration, we will implement
+this function in pure C.</p>
+<section id="implement-your-c-function">
+<h2>Implement your C function<a class="headerlink" href="#implement-your-c-function" title="Permalink to this heading">#</a></h2>
 <p>First, we need to create a <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code> file with a single function called <span class="math notranslate nohighlight">\(my_cos\)</span>. The
 <span class="math notranslate nohighlight">\(my_cos\)</span> function contains a for loop function to compute the cosine for each element of an input array <code class="code docutils literal notranslate"><span class="pre">*in_array</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
@@ -269,7 +269,7 @@ the cos function in pure C.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then, we need to create a shared library by running the following command in your terminal</p>
+<p>Then, we need to create a shared library by running the following command in your terminal.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gcc -fPIC -shared my_lib.c -o my_lib.so
 </pre></div>
 </div>
@@ -277,8 +277,8 @@ the cos function in pure C.</p>
 </section>
 <section id="calling-your-function">
 <h2>Calling your function<a class="headerlink" href="#calling-your-function" title="Permalink to this heading">#</a></h2>
-<p>To call our function, we need to create a python script called <code class="code docutils literal notranslate"><span class="pre">show_sine.py</span></code>. In this python script, we import the C library / function using the module <code class="code docutils literal notranslate"><span class="pre">ctypes</span></code>.
-Specifically, this script creates an instantaneous phase vector <code class="code docutils literal notranslate"><span class="pre">phase</span></code>, and calls the C function <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> to compute the cosinus for each element of this vector.
+<p>To call our function, we need to create a python script called <code class="code docutils literal notranslate"><span class="pre">show_sine.py</span></code>.
+Specifically, this script imports the C library / function using the module <code class="code docutils literal notranslate"><span class="pre">ctypes</span></code>, creates an instantaneous phase vector <code class="code docutils literal notranslate"><span class="pre">phase</span></code>, and calls the C function <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> to compute the cosine for each element of this vector.
 The output array is then plotted using the <code class="code docutils literal notranslate"><span class="pre">matplotlib</span></code> module.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -309,11 +309,11 @@ The output array is then plotted using the <code class="code docutils literal no
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Finally, we can run our python script using the following command :</p>
+<p>Finally, we can run our python script using the following command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python show_sine.py
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="tutorials/img/c_numpy.png"><img alt="Output of the show_sine.py script" src="tutorials/img/c_numpy.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/c_numpy.jpg"><img alt="Output of the show_sine.py script" src="../_images/c_numpy.jpg" style="width: 100%;" /></a>
 </section>
 </section>
 
