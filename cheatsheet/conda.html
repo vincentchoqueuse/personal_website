@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Git &#8212; personal website  documentation</title>
+    <title>Conda &#8212; personal website  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -40,8 +40,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="About Me" href="../about.html" />
-    <link rel="prev" title="Django" href="django.html" />
+    <link rel="next" title="Latex" href="latex.html" />
+    <link rel="prev" title="Python 3" href="python.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -178,8 +178,8 @@
    Python 3
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="conda.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Conda
   </a>
  </li>
@@ -203,8 +203,8 @@
    Django
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="git.html">
    Git
   </a>
  </li>
@@ -233,23 +233,13 @@
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
+  <a class="reference internal nav-link" href="#basics">
+   Basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#initialisation">
-   Initialisation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stage-snapshot">
-   Stage &amp; Snapshot
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#branch-merge">
-   Branch &amp; Merge
+  <a class="reference internal nav-link" href="#using-environments">
+   Using environments
   </a>
  </li>
 </ul>
@@ -271,102 +261,56 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h1>
+  <section id="conda">
+<h1>Conda<a class="headerlink" href="#conda" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Source: <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">https://education.github.com/git-cheat-sheet-education.pdf</a></p></li>
 </ul>
-<section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this heading">#</a></h2>
 <table class="table">
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.name</span> <span class="pre">“[firstname</span> <span class="pre">lastname]”</span></code></p></td>
-<td><p>set a name that is identifiable for credit when review version history</p></td>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span></code></p></td>
+<td><p>verify conda installation, check version number</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.email</span> <span class="pre">“[valid-email]”</span></code></p></td>
-<td><p>set an email address that will be associated with each history marker</p></td>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">conda</span></code></p></td>
+<td><p>update conda to the current version</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">color.ui</span> <span class="pre">auto</span></code></p></td>
-<td><p>set automatic command line coloring for Git for easy reviewing</p></td>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">{{PACKAGENAME}}</span></code></p></td>
+<td><p>install a package included in Anaconda</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="initialisation">
-<h2>Initialisation<a class="headerlink" href="#initialisation" title="Permalink to this heading">#</a></h2>
+<section id="using-environments">
+<h2>Using environments<a class="headerlink" href="#using-environments" title="Permalink to this heading">#</a></h2>
 <table class="table">
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code></p></td>
-<td><p>initialize an existing directory as a Git repository</p></td>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">py35</span> <span class="pre">python=3.5</span></code></p></td>
+<td><p>create a new environment named py35, install Python 3.5</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">[url]</span></code></p></td>
-<td><p>retrieve an entire repository from a hosted location via URL</p></td>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">py35</span></code></p></td>
+<td><p>activate the new environment to use it</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">color.ui</span> <span class="pre">auto</span></code></p></td>
-<td><p>set automatic command line coloring for Git for easy reviewing</p></td>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span> <span class="pre">py35</span></code></p></td>
+<td><p>deactivate the current environment</p></td>
 </tr>
-</tbody>
-</table>
-</section>
-<section id="stage-snapshot">
-<h2>Stage &amp; Snapshot<a class="headerlink" href="#stage-snapshot" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<colgroup>
-<col style="width: 50.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></td>
-<td><p>show modified files in working directory, staged for your next commit</p></td>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code></p></td>
+<td><p>get a list of all my environments</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">[file]</span></code></p></td>
-<td><p>add a file as it looks now to your next commit (stage)</p></td>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code></p></td>
+<td><p>list all packages and versions installed in active environment</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">[file]</span></code></p></td>
-<td><p>unstage a file while retaining the changes in working directory</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code></p></td>
-<td><p>diff of what is changed but not staged</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--staged</span></code></p></td>
-<td><p>diff of what is staged but not yet committed</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">“[descriptive</span> <span class="pre">message]”</span></code></p></td>
-<td><p>commit your staged content as a new commit snapshot</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="branch-merge">
-<h2>Branch &amp; Merge<a class="headerlink" href="#branch-merge" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<colgroup>
-<col style="width: 50.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code></p></td>
-<td><p>list your branches. a * will appear next to the currently active branch</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">[branch-name]</span></code></p></td>
-<td><p>create a new branch at the current commit</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code></p></td>
-<td><p>switch to another branch and check it out into your working directory</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">[branch]</span></code></p></td>
-<td><p>merge the specified branch’s history into the current one</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code></p></td>
-<td><p>show all commits in the current branch’s history</p></td>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">remove</span> <span class="pre">--name</span> <span class="pre">py35</span></code></p></td>
+<td><p>Delete an environment and everything in it</p></td>
 </tr>
 </tbody>
 </table>
