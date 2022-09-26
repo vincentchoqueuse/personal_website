@@ -223,8 +223,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calling-your-function">
-   Calling your function
+  <a class="reference internal nav-link" href="#call-your-function">
+   Call your function
   </a>
  </li>
 </ul>
@@ -250,14 +250,14 @@
 <h1>Calling a C function from Python<a class="headerlink" href="#calling-a-c-function-from-python" title="Permalink to this heading">#</a></h1>
 <p>This tutorial shows how to create a C function and call it from Python.
 This case arises when we want to analyse the output of a C function using python modules such as Numpy or
-Matplotlib. For example, this approach can help you to debug low-level signal processing algorithms.</p>
+Matplotlib for rapid prototyping. For example, this approach can help you to debug low-level signal processing algorithms implemented in C.</p>
 <p>In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a <code class="code docutils literal notranslate"><span class="pre">Numpy</span></code> array.
 Note that this computation can be performed using the Numpy function <code class="code docutils literal notranslate"><span class="pre">cos</span></code> directly, but for the sake of illustration, we will implement
 this function in pure C.</p>
 <section id="implement-your-c-function">
 <h2>Implement your C function<a class="headerlink" href="#implement-your-c-function" title="Permalink to this heading">#</a></h2>
 <p>First, we need to create a <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code> file with a single function called <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code>. The
-<code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> function contains a for loop function to compute the cosine for each element of an input array <code class="code docutils literal notranslate"><span class="pre">*in_array</span></code>.</p>
+<code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> function contains a for loop function that computes the cosine value for each element of the input array <code class="code docutils literal notranslate"><span class="pre">*in_array</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">my_cos</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">in_array</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out_array</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">){</span><span class="w"></span>
@@ -268,17 +268,22 @@ this function in pure C.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then, we need to create a shared library by running the following command in your terminal.</p>
+<p>After saving the file <code class="code docutils literal notranslate"><span class="pre">my_lib.c</span></code>, we need to create a shared library by running the following command in your terminal.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gcc -fPIC -shared my_lib.c -o my_lib.so
 </pre></div>
 </div>
 <p>This command creates a file called <code class="code docutils literal notranslate"><span class="pre">my_lib.so</span></code></p>
 </section>
-<section id="calling-your-function">
-<h2>Calling your function<a class="headerlink" href="#calling-your-function" title="Permalink to this heading">#</a></h2>
+<section id="call-your-function">
+<h2>Call your function<a class="headerlink" href="#call-your-function" title="Permalink to this heading">#</a></h2>
 <p>To call our function, we need to create a python script called <code class="code docutils literal notranslate"><span class="pre">show_sine.py</span></code>.
-Specifically, this script imports the C library / function using the module <code class="code docutils literal notranslate"><span class="pre">ctypes</span></code>, creates an instantaneous phase vector <code class="code docutils literal notranslate"><span class="pre">phase</span></code>, and calls the C function <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> to compute the cosine for each element of this vector.
-The output array is then plotted using the <code class="code docutils literal notranslate"><span class="pre">matplotlib</span></code> module.</p>
+Specifically, this script:</p>
+<ul class="simple">
+<li><p>imports the C library / function using the module <code class="code docutils literal notranslate"><span class="pre">ctypes</span></code>,</p></li>
+<li><p>creates an instantaneous phase vector <code class="code docutils literal notranslate"><span class="pre">phase</span></code>,</p></li>
+<li><p>calls the C function <code class="code docutils literal notranslate"><span class="pre">my_cos</span></code> to compute the cosine for each element of this vector,</p></li>
+<li><p>plots the output array using <code class="code docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy.ctypeslib</span> <span class="kn">import</span> <span class="n">ndpointer</span>
@@ -341,7 +346,7 @@ The output array is then plotted using the <code class="code docutils literal no
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.0.post0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.1.<br>
 </p>
   </div>
   

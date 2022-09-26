@@ -3,7 +3,7 @@ Calling a C function from Python
 
 This tutorial shows how to create a C function and call it from Python. 
 This case arises when we want to analyse the output of a C function using python modules such as Numpy or 
-Matplotlib. For example, this approach can help you to debug low-level signal processing algorithms. 
+Matplotlib for rapid prototyping. For example, this approach can help you to debug low-level signal processing algorithms implemented in C.
 
 In this tutorial, I consider a simple case where we want to compute the cosine value for each element of a :code:`Numpy` array.
 Note that this computation can be performed using the Numpy function :code:`cos` directly, but for the sake of illustration, we will implement 
@@ -13,7 +13,7 @@ Implement your C function
 -------------------------
 
 First, we need to create a :code:`my_lib.c` file with a single function called :code:`my_cos`. The 
-:code:`my_cos` function contains a for loop function to compute the cosine for each element of an input array :code:`*in_array`.
+:code:`my_cos` function contains a for loop function that computes the cosine value for each element of the input array :code:`*in_array`.
 
 .. code :: c
 
@@ -26,7 +26,7 @@ First, we need to create a :code:`my_lib.c` file with a single function called :
         }
     }
 
-Then, we need to create a shared library by running the following command in your terminal.
+After saving the file :code:`my_lib.c`, we need to create a shared library by running the following command in your terminal.
 
 .. code ::
 
@@ -34,12 +34,16 @@ Then, we need to create a shared library by running the following command in you
 
 This command creates a file called :code:`my_lib.so`
 
-Calling your function 
----------------------
+Call your function 
+------------------
 
 To call our function, we need to create a python script called :code:`show_sine.py`.
-Specifically, this script imports the C library / function using the module :code:`ctypes`, creates an instantaneous phase vector :code:`phase`, and calls the C function :code:`my_cos` to compute the cosine for each element of this vector.
-The output array is then plotted using the :code:`matplotlib` module.
+Specifically, this script:
+
+* imports the C library / function using the module :code:`ctypes`, 
+* creates an instantaneous phase vector :code:`phase`, 
+* calls the C function :code:`my_cos` to compute the cosine for each element of this vector,
+* plots the output array using :code:`matplotlib`.
 
 .. code ::
 
