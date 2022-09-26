@@ -6,6 +6,7 @@ Cheatsheet
    :caption: Contents:
 
    python
+   conda
    latex
    tikz
    markdown
