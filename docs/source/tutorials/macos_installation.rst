@@ -31,7 +31,7 @@ Il est possible d'installer les librairies scientifiques facilement en utilisant
 
 .. code ::
 
-    $ conda install numpy scipy matplotlib jupyter seaborn
+    $ conda install numpy scipy matplotlib seaborn jupyter
 
 Si l'installation s'est bien passée, le lancement de la commande :code:`pip list` doit vous afficher la liste des paquets python installés.
 
@@ -42,7 +42,6 @@ Editeur de Code
 Pour éditer du code, je recommande l'utilisation de Vscode 
 
 * Téléchargez Vscode et installez le: https://code.visualstudio.com/download 
-
 
 
 Installation des outils de développement
@@ -60,6 +59,7 @@ Installation
 
     $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+L'installation vous demandera probablement d'installer les `command line tools` de xcode (valider la demande).
 
 Programmation en C 
 ++++++++++++++++++
@@ -118,3 +118,4 @@ Si l'installation s'est bien passée, le lancement de la commande :code:`openOCD
     Licensed under GNU GPL v2
     For bug reports, read
         http://openocd.org/doc/doxygen/bugs.html
+
