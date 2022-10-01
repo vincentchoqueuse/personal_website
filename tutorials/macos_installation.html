@@ -193,6 +193,11 @@
    Calling a C function from Python
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conda.html">
+   Utilisation de Conda
+  </a>
+ </li>
 </ul>
 
   </div>
@@ -325,7 +330,7 @@
 <h4>Librairies Python<a class="headerlink" href="#librairies-python" title="Permalink to this heading">#</a></h4>
 <p>De base miniconda ne contient qu’un ensemble réduit de librairies Python (lancer la commande <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> pour connaître les paquets installés).
 Il est possible d’installer les librairies scientifiques facilement en utilisant la commande :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install numpy scipy matplotlib jupyter seaborn
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install numpy scipy matplotlib seaborn jupyter
 </pre></div>
 </div>
 <p>Si l’installation s’est bien passée, le lancement de la commande <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> doit vous afficher la liste des paquets python installés.</p>
@@ -349,6 +354,7 @@ Il est possible d’installer les librairies scientifiques facilement en utilisa
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 </pre></div>
 </div>
+<p>L’installation vous demandera probablement d’installer les <cite>command line tools</cite> de xcode (valider la demande).</p>
 </section>
 </section>
 <section id="programmation-en-c">
@@ -424,7 +430,7 @@ For bug reports, read
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

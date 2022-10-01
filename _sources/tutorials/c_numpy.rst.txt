@@ -1,5 +1,5 @@
 Calling a C function from Python
-==============================
+================================
 
 This tutorial shows how to create a C function and call it from Python. 
 This case arises when we want to analyse the output of a C function using python modules such as Numpy or 

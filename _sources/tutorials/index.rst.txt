@@ -9,3 +9,4 @@ Tutorials
     macos_installation.rst
     sphinx_course.rst
     c_numpy.rst
+    conda.rst
