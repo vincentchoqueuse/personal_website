@@ -329,12 +329,12 @@ read in the wavetable. If <span class="math notranslate nohighlight">\(y[n]\)</s
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Delta=N\frac{f_0}{f_s}\)</span> corresponds to the phase delta between two adjacent samples.</p></li>
 </ul>
-<p>It is important to note that the phase delta <span class="math notranslate nohighlight">\(\Delta\)</span> is not always an integer. To address this issue, two solutions can be implemented.</p>
+<p>It is important to note that the index <span class="math notranslate nohighlight">\(k=m+\Delta\)</span> is not always an integer. To address this issue, two solutions can be implemented.</p>
 <section id="th-order-interpolation">
 <h3>0th order Interpolation<a class="headerlink" href="#th-order-interpolation" title="Permalink to this heading">#</a></h3>
-<p>The phase delta is rounded to the  greatest integer less than or equal to <span class="math notranslate nohighlight">\(\Delta\)</span>. The output sample is then given by :</p>
+<p>The index can be rounded to the  greatest integer less than or equal to <span class="math notranslate nohighlight">\(k\)</span>. The output sample is then given by :</p>
 <div class="math notranslate nohighlight">
-\[y[n+1] = x[m+\lfloor \Delta \rfloor]\]</div>
+\[y[n+1] = x[\lfloor k \rfloor]\]</div>
 </section>
 <section id="linear-interpolation">
 <h3>Linear Interpolation<a class="headerlink" href="#linear-interpolation" title="Permalink to this heading">#</a></h3>
@@ -342,14 +342,14 @@ read in the wavetable. If <span class="math notranslate nohighlight">\(y[n]\)</s
 <div class="math notranslate nohighlight">
 \[y[n+1] = x_l + \alpha (x_r-x_l)\]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x_l=x[m+\lfloor \Delta \rfloor ]\)</span> and <span class="math notranslate nohighlight">\(x_r = x[m+\lfloor \Delta \rfloor+1]\)</span> corresponds to two adjacent samples.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\alpha = \Delta-\lfloor \Delta \rfloor\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha = k-\lfloor k \rfloor\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_l=x[k]\)</span> and <span class="math notranslate nohighlight">\(x_r = x[k+1]\)</span> corresponds to two adjacent samples.</p></li>
 </ul>
 </section>
 </section>
 <section id="c-implementation">
 <h2>C Implementation<a class="headerlink" href="#c-implementation" title="Permalink to this heading">#</a></h2>
-<p>The following code shows a possible implementation for the wavetable synthesizer.</p>
+<p>The following code shows a possible C implementation for the wavetable synthesizer.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w"></span>
