@@ -1,0 +1,94 @@
+\documentclass[tikz,14pt,border=10pt]{standalone}
+\usepackage{textcomp}
+\usetikzlibrary{shapes,arrows}
+\begin{document}
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  gain/.style      = {draw, isosceles triangle, node distance = 2cm}, % Adder
+  nodecircle/.style    = {draw, circle, node distance = 2cm, fill=black}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\begin{tikzpicture}[auto, thick, node distance=2cm, >=triangle 45]
+\draw
+	% Drawing the blocks of first filter :
+	node at (0,0)[right=-3mm]{\Large \textopenbullet}
+    node at (-1,0) {$x[n]$}
+	node [input, name=input1] {} 
+	node [sum, right of=input1] (suma1) {\suma}
+    node[left of=suma1, node distance=0.5cm, yshift=0.5cm] (){+}
+    node[left of=suma1, node distance=0.5cm, yshift=-0.5cm] (){-}
+    node [sum, right of=suma1] (suma2) {\suma}
+    node[left of=suma2, node distance=0.5cm, yshift=0.5cm] (){+}
+    node[left of=suma2, node distance=0.5cm, yshift=-0.5cm] (){-}
+    node [nodecircle, right of=suma2, node distance=1cm] (node2) {}
+    node[above of=node2](yh){$y_h[n]$}
+    node [gain, right of=suma2] (gain1) {} 
+    node[above of=gain1, node distance=0.5cm]{$\alpha_1$}
+    node [sum, right of=gain1] (suma3) {\suma}
+    node[left of=suma3, node distance=0.5cm, yshift=0.5cm] (){+}
+    node[left of=suma3, node distance=0.5cm, yshift=-0.5cm] (){+}
+    node [nodecircle, right of=suma3, node distance=4cm] (node0) {}
+    node[above of=node0](yb){$y_b[n]$}
+    node [gain, right of=suma3, node distance=6cm] (gain2) {} 
+    node[above of=gain2, node distance=0.5cm]{$\alpha_1$}
+    node [sum, right of=gain2] (suma4) {\suma}
+    node[left of=suma4, node distance=0.5cm, yshift=0.5cm] (){+}
+    node[left of=suma4, node distance=0.5cm, yshift=-0.5cm] (){+}
+    node [nodecircle, right of=suma4, node distance=4cm] (node1) {} 
+    node [right of=suma4, node distance=6cm] (out) {$y_l[n]$};
+
+    % Joining blocks. 
+    % Commands \draw with options like [->] must be written individually
+	\draw[->](input1) -- node {}(suma1);
+ 	\draw[->](suma1) -- node {} (suma2);
+	\draw[->](suma2) -- node {} (gain1);
+    \draw[->](gain1) -- node {} (suma3);
+	\draw[->](suma3) -- node {} (gain2);
+    \draw[->](gain2) -- node {} (suma4);
+    \draw[->](suma4) -- node {} (out);
+	% Adder
+
+
+\draw
+	node[below of=suma3,xshift=2cm] [block] (z1){$z^{-1}$};
+\draw[->](node0) |- node {} (z1);
+\draw[->](z1) -| node {} (suma3);
+\draw[->](node0) -- node {} (yb);
+\draw[->](node2) -- node {} (yh);
+
+\draw
+	node[below of=z1] [block](z2){$z^{-1}$}
+    node [gain, left of=z2, rotate=180] (gain3) {} node[above of=gain3, node distance=0.5cm]{$\alpha_2$};
+
+\draw[->](node0) |- node {} (z2);
+\draw[-](z2) -- node {} (gain3);
+\draw[->](gain3) -| node {} (suma2);
+
+\draw
+	node[below of=z2] [block](z3){$z^{-1}$};
+
+
+\draw
+	node[below of=suma4,xshift=2cm] [block] (z4){$z^{-1}$};
+    \draw[-](node1) |- node {} (z4);
+    \draw[->](z4) -| node {} (suma4);
+	
+	\draw[-](node1) |- node {} (z3);
+    \draw[->](z3) -| node {} (suma1);
+
+
+\end{tikzpicture}
+\end{document}
+
+
+
+\end{document}
