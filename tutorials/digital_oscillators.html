@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Digital Oscillators &#8212; personal website  documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Digital State Variable Filter" href="digital_state_filter.html" />
+    <link rel="prev" title="Tutorials" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../courses/index.html">
+  Courses
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../research/index.html">
+  Research
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../projects/index.html">
+  Projects
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../cheatsheet/index.html">
+  Cheatsheet
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../about.html">
+  About Me
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/vincent-choqueuse-388a5720/" rel="noopener" target="_blank" title="Linkedin"><span><i class="fab fa-linkedin"></i></span>
+            <label class="sr-only">Linkedin</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/vincentchoqueuse/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Digital Oscillators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="digital_state_filter.html">
+   Digital State Variable Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="macos_installation.html">
+   Installation MacOS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sphinx_course.html">
+   Course Website with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="c_numpy.html">
+   Calling a C function from Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conda.html">
+   Utilisation de Conda
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sine-wave-waveform">
+   Sine Wave Waveform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wavetable">
+   Wavetable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlling-the-fundamental-frequency">
+   Controlling the Fundamental Frequency
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#th-order-interpolation">
+     0th order Interpolation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-interpolation">
+     Linear Interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-implementation">
+   C Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verification">
+   Verification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="digital-oscillators">
+<h1>Digital Oscillators<a class="headerlink" href="#digital-oscillators" title="Permalink to this heading">#</a></h1>
+<p>In this tutorial, we shows how to generate a digital waveform using a lookup table.
+Specifically, we focus on the generation of a sine waveform, but this tutorial can be easily extended to
+other waveforms such as triangle or sawtooth waveforms.</p>
+<section id="sine-wave-waveform">
+<h2>Sine Wave Waveform<a class="headerlink" href="#sine-wave-waveform" title="Permalink to this heading">#</a></h2>
+<p>A sine wave can be mathematically described as</p>
+<div class="math notranslate nohighlight">
+\[x(t) = \sin(2\pi f_0 t)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_0\)</span> corresponds to the fundamental frequency.</p></li>
+</ul>
+<p>In the digital domain, the sine wave can be obtained by evaluating
+<span class="math notranslate nohighlight">\(x(t)\)</span> for <span class="math notranslate nohighlight">\(t=n/fs\)</span> with <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>. For the C language, the function <span class="math notranslate nohighlight">\(x(n/fs)\)</span> can be evaluated
+naively using the <code class="code docutils literal notranslate"><span class="pre">sin</span></code> function of the library <code class="code docutils literal notranslate"><span class="pre">math.h</span></code>. Nevertheless, the evaluation of trigonometric functions increases the
+computational complexity of your program. In this tutorial, we describe an alternative low-complexity implementation based on a wavetable.</p>
+</section>
+<section id="wavetable">
+<h2>Wavetable<a class="headerlink" href="#wavetable" title="Permalink to this heading">#</a></h2>
+<p>To reduce the computational complexity, we can store in memory a full cycle of a sine waveform.</p>
+<div class="math notranslate nohighlight">
+\[x[n] = \sin(2\pi n/N)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\in \mathbb{N}\)</span> corresponds to the length of the wavetable.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/digital_oscillators-1.png" class="plot-directive" src="../_images/digital_oscillators-1.png" />
+</figure>
+</section>
+<section id="controlling-the-fundamental-frequency">
+<h2>Controlling the Fundamental Frequency<a class="headerlink" href="#controlling-the-fundamental-frequency" title="Permalink to this heading">#</a></h2>
+<p>Reading each sample of the wavetable with a sampling frequency <code class="code docutils literal notranslate"><span class="pre">f_s</span></code> allows to synthesize a sinewave with frequency
+<span class="math notranslate nohighlight">\(f_{0}=N/f_s\)</span> Hz. To modify the fundamental frequency to <span class="math notranslate nohighlight">\(f_0\)</span> Hz, one solution is to change the rate at which the samples are
+read in the wavetable. If <span class="math notranslate nohighlight">\(y[n]\)</span> corresponds to the nth output sample and  <span class="math notranslate nohighlight">\(y[n] = x[m]\)</span>, the (n+1)th output signal can be computed from the wavetable as follows :</p>
+<div class="math notranslate nohighlight">
+\[y[n+1] = x[m+\Delta]\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta=N\frac{f_0}{f_s}\)</span> corresponds to the phase delta between two adjacent samples.</p></li>
+</ul>
+<p>It is important to note that the phase delta <span class="math notranslate nohighlight">\(\Delta\)</span> is not always an integer. To address this issue, two solutions can be implemented.</p>
+<section id="th-order-interpolation">
+<h3>0th order Interpolation<a class="headerlink" href="#th-order-interpolation" title="Permalink to this heading">#</a></h3>
+<p>The phase delta is rounded to the  greatest integer less than or equal to <span class="math notranslate nohighlight">\(\Delta\)</span>. The output sample is then given by :</p>
+<div class="math notranslate nohighlight">
+\[y[n+1] = x[m+\lfloor \Delta \rfloor]\]</div>
+</section>
+<section id="linear-interpolation">
+<h3>Linear Interpolation<a class="headerlink" href="#linear-interpolation" title="Permalink to this heading">#</a></h3>
+<p>The interpolated sample <span class="math notranslate nohighlight">\(y[n+1]\)</span> can be obtained as :</p>
+<div class="math notranslate nohighlight">
+\[y[n+1] = x_l + \alpha (x_r-x_l)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_l=x[m+\lfloor \Delta \rfloor ]\)</span> and <span class="math notranslate nohighlight">\(x_r = x[m+\lfloor \Delta \rfloor+1]\)</span> corresponds to two adjacent samples.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha = \Delta-\lfloor \Delta \rfloor\)</span>,</p></li>
+</ul>
+</section>
+</section>
+<section id="c-implementation">
+<h2>C Implementation<a class="headerlink" href="#c-implementation" title="Permalink to this heading">#</a></h2>
+<p>The following code shows a possible implementation for the wavetable synthesizer.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">wavetable</span><span class="p">[</span><span class="mi">128</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mf">0.000000000000000000e+00</span><span class="p">,</span><span class="w"> </span><span class="mf">4.906767432741801493e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">9.801714032956060363e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">1.467304744553617479e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">1.950903220161282481e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">2.429801799032638709e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">2.902846772544623311e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">3.368898533922200511e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">3.826834323650897818e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">4.275550934302820849e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">4.713967368259976420e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">5.141027441932216613e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">5.555702330196021776e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">5.956993044924333569e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">6.343932841636454878e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">6.715589548470183301e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">7.071067811865474617e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">7.409511253549589949e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">7.730104533627368824e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.032075314806448318e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.314696123025451246e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.577286100002721181e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.819212643483549385e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.039892931234433382e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.238795325112867385e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.415440651830208063e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.569403357322089354e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.700312531945439742e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.807852804032304306e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.891765099647810144e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.951847266721968177e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.987954562051724050e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">1.000000000000000000e+00</span><span class="p">,</span><span class="w"> </span><span class="mf">9.987954562051724050e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.951847266721969287e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.891765099647810144e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.807852804032304306e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.700312531945439742e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.569403357322089354e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.415440651830208063e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.238795325112867385e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.039892931234434492e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.819212643483550496e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.577286100002721181e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.314696123025454577e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">8.032075314806449429e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">7.730104533627371044e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">7.409511253549589949e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">7.071067811865475727e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">6.715589548470185521e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">6.343932841636454878e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">5.956993044924334679e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">5.555702330196021776e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">5.141027441932217723e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">4.713967368259978086e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">4.275550934302820294e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">3.826834323650898373e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">3.368898533922202732e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">2.902846772544623311e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">2.429801799032640375e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">1.950903220161285812e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">1.467304744553618034e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">9.801714032956083955e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">4.906767432741797330e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">1.224646799147353207e-16</span><span class="p">,</span><span class="w"> </span><span class="mf">-4.906767432741772350e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.801714032956058975e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.467304744553615814e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.950903220161283591e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.429801799032638154e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.902846772544621645e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-3.368898533922201066e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-3.826834323650896708e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-4.275550934302818074e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-4.713967368259976420e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-5.141027441932215503e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-5.555702330196019556e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-5.956993044924332459e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-6.343932841636452657e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-6.715589548470184411e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.071067811865474617e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.409511253549587728e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.730104533627366603e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.032075314806450539e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.314696123025452357e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.577286100002720071e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.819212643483549385e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.039892931234431162e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.238795325112865164e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.415440651830208063e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.569403357322088244e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.700312531945439742e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.807852804032303196e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.891765099647809034e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.951847266721969287e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.987954562051724050e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.000000000000000000e+00</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.987954562051724050e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.951847266721969287e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.891765099647809034e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.807852804032304306e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.700312531945439742e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.569403357322089354e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.415440651830209173e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.238795325112866275e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.039892931234433382e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.819212643483550496e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.577286100002722291e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.314696123025455687e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-8.032075314806452759e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.730104533627368824e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.409511253549592169e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.071067811865476838e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-6.715589548470186632e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-6.343932841636459319e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-5.956993044924332459e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-5.555702330196021776e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-5.141027441932218833e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-4.713967368259979196e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-4.275550934302825290e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-3.826834323650903924e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-3.368898533922199956e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.902846772544624421e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.429801799032641763e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.950903220161287199e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.467304744553623863e-01</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.801714032956052036e-02</span><span class="p">,</span><span class="w"> </span><span class="mf">-4.906767432741809126e-02</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">oscillator</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">f0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fs</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">currentIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">coef</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">currentIndex</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index_l</span><span class="p">,</span><span class="w"> </span><span class="n">index_r</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">index_l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">index</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">index_r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">index_l</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="mi">-1</span><span class="p">))</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">index_l</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">index_l</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">buffer</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wavetable</span><span class="p">[</span><span class="n">index_l</span><span class="p">]</span><span class="o">+</span><span class="w"> </span><span class="n">coef</span><span class="o">*</span><span class="p">(</span><span class="n">wavetable</span><span class="p">[</span><span class="n">index_r</span><span class="p">]</span><span class="o">-</span><span class="n">wavetable</span><span class="p">[</span><span class="n">index_l</span><span class="p">]);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">//update increment</span>
+<span class="w">        </span><span class="n">index</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">N</span><span class="o">*</span><span class="p">(</span><span class="n">f0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">*</span><span class="n">fs</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fmod</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="o">*</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//export index</span>
+<span class="w">    </span><span class="o">*</span><span class="n">currentIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h2>
+<p>I recommend to check the validity of the C code by comparing the output of the C and Python implementation.</p>
+<ul class="simple">
+<li><p>First, compile the C code as a shared library</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gcc -fPIC -shared my_lib.c -o my_lib.so
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Then, run the following python code.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.ctypeslib</span> <span class="kn">import</span> <span class="n">ndpointer</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="c1"># import C function</span>
+<span class="n">lib</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cdll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="s2">&quot;./my_lib.so&quot;</span><span class="p">)</span>
+<span class="n">oscillator</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">oscillator</span>
+<span class="n">oscillator</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">oscillator</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s2">&quot;C_CONTIGUOUS&quot;</span><span class="p">),</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">,</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">c_size_t</span><span class="p">,</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">),</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">c_size_t</span><span class="p">]</span>
+
+<span class="c1"># parameter</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="mf">134.23</span>
+
+<span class="c1"># create oscillator</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># allocate arguments and call the C function</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">currentIndex</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">oscillator</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">currentIndex</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># plot the result</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y_l[n]$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/sinewave.png"><img alt="Comparison of Python and C implementation" src="../_images/sinewave.png" style="width: 100%;" /></a>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>JUCE C++ implementation: <a class="reference external" href="https://docs.juce.com/master/tutorial_wavetable_synth.html">https://docs.juce.com/master/tutorial_wavetable_synth.html</a></p></li>
+</ul>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, V. Choqueuse.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
