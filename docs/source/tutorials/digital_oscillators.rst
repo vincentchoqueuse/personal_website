@@ -62,16 +62,16 @@ read in the wavetable. If :math:`y[n]` corresponds to the nth output sample and 
 
 * :math:`\Delta=N\frac{f_0}{f_s}` corresponds to the phase delta between two adjacent samples.
 
-It is important to note that the phase delta :math:`\Delta` is not always an integer. To address this issue, two solutions can be implemented.
+It is important to note that the index :math:`k=m+\Delta` is not always an integer. To address this issue, two solutions can be implemented.
 
 0th order Interpolation 
 +++++++++++++++++++++++
 
-The phase delta is rounded to the  greatest integer less than or equal to :math:`\Delta`. The output sample is then given by :
+The index can be rounded to the  greatest integer less than or equal to :math:`k`. The output sample is then given by :
 
 .. math ::
 
-    y[n+1] = x[m+\lfloor \Delta \rfloor]
+    y[n+1] = x[\lfloor k \rfloor]
 
 Linear Interpolation
 ++++++++++++++++++++
@@ -82,13 +82,14 @@ The interpolated sample :math:`y[n+1]` can be obtained as :
 
     y[n+1] = x_l + \alpha (x_r-x_l)
 
-* :math:`x_l=x[m+\lfloor \Delta \rfloor ]` and :math:`x_r = x[m+\lfloor \Delta \rfloor+1]` corresponds to two adjacent samples.
-* :math:`\alpha = \Delta-\lfloor \Delta \rfloor`,
+* :math:`\alpha = k-\lfloor k \rfloor`,
+* :math:`x_l=x[k]` and :math:`x_r = x[k+1]` corresponds to two adjacent samples.
+
 
 C Implementation 
 ----------------
 
-The following code shows a possible implementation for the wavetable synthesizer. 
+The following code shows a possible C implementation for the wavetable synthesizer. 
 
 
 .. code :: c
