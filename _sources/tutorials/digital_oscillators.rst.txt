@@ -103,6 +103,7 @@ The following code shows a possible C implementation for the wavetable synthesiz
     {
         double coef; 
         float index = *currentIndex;
+        float delta = N*(f0/(1.0*fs));
         int index_l, index_r;
         int n;
 
@@ -113,7 +114,7 @@ The following code shows a possible C implementation for the wavetable synthesiz
             coef = index - index_l;
             buffer[n] = wavetable[index_l]+ coef*(wavetable[index_r]-wavetable[index_l]);
             //update increment
-            index += N*(f0/(1.0*fs));
+            index += delta;
             index = fmod(index, 1.0*N);
         }
 
