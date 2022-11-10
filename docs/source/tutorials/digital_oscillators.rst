@@ -55,11 +55,13 @@ By reading each sample of the wavetable with a sampling frequency :code:`f_s`, w
     
     f_{0}=N/f_s (Hz). 
 
+In practice, we need to synthesize a sine wave with arbitrary frequency :math:`f_0`. The following section shows how 
+to modify the rate at which the samples are read in the wavetable.
+
 Controlling the Fundamental Frequency
 -------------------------------------
 
-To control the fundamental frequency :math:`f_0` Hz, one solution is to change the rate at which the samples are 
-read in the wavetable. If :math:`y[n]` corresponds to the nth output sample and  :math:`y[n] = x[m]`, the (n+1)th output signal can be computed from the wavetable as follows :
+If :math:`y[n]` corresponds to the nth output sample and  :math:`y[n] = x[m]`, the (n+1)th output signal can be computed from the wavetable as follows :
 
 .. math ::
 
