@@ -8,7 +8,7 @@ other waveforms such as triangle or sawtooth waveforms.
 Sine Wave Waveform 
 ------------------
 
-A sine wave can be mathematically described as 
+A sine wave is mathematically described by :
 
 .. math ::
 
@@ -16,21 +16,23 @@ A sine wave can be mathematically described as
 
 * :math:`f_0` corresponds to the fundamental frequency. 
 
-In the digital domain, the sine wave can be obtained by evaluating 
-:math:`x(t)` for :math:`t=n/fs` with :math:`n \in \mathbb{N}`. For the C language, the function :math:`x(n/fs)` can be evaluated 
-naively using the :code:`sin` function of the library :code:`math.h`. Nevertheless, the evaluation of trigonometric functions increases the 
-computational complexity of your program. In this tutorial, we describe an alternative low-complexity implementation based on a wavetable.
+In the digital domain, the sine wave can be obtained by evaluating :math:`x(t)` for :math:`t=n/f_s` where :math:`n \in \mathbb{N}` and :math:`f_s` is the sampling frequency.
 
-Wavetable 
----------
+When using the C language, the function :math:`x[n]=x(n/fs)` can be evaluated 
+naively using the :code:`sin` function of the library :code:`math.h`. Nevertheless, it is important to note that the evaluation of trigonometric functions 
+has a relatively large computational cost. In this tutorial, we describe an alternative low-complexity implementation based on a wavetable oscillator.
 
-To reduce the computational complexity, we can store in memory a full cycle of a sine waveform.
+Wavetable Oscillator
+--------------------
+
+To reduce the computational complexity, one solution is to store in memory a single full cycle of a reference waveform.
+For a sine wave, the reference waveform is given by :
 
 .. math ::
 
     x[n] = \sin(2\pi n/N)
 
-* :math:`N\in \mathbb{N}` corresponds to the length of the wavetable.
+* :math:`N` corresponds to the length of the wavetable.
 
 .. plot :: 
     :include-source: false
@@ -49,19 +51,24 @@ To reduce the computational complexity, we can store in memory a full cycle of a
     plt.ylabel("$x[n]$")
     plt.xlim([0, N-1])
 
-By reading each sample of the wavetable with a sampling frequency :code:`f_s`, we synthesize a sinewave with frequency 
+The fundamental frequency of this waveform depends on the sampling frequency :code:`f_s`. By reading each sample 
+of the wavetable sample by sample, we can synthesize a periodic waveform with a fixed fundamental frequency :
 
 .. math ::
     
-    f_{0}=N/f_s (Hz). 
+    f_{0}=N/f_s~~[Hz]. 
 
-In practice, we need to synthesize a sine wave with arbitrary frequency :math:`f_0`. The following section shows how 
-to modify the rate at which the samples are read in the wavetable.
+
 
 Controlling the Fundamental Frequency
 -------------------------------------
 
-If :math:`y[n]` corresponds to the nth output sample and  :math:`y[n] = x[m]`, the (n+1)th output signal can be computed from the wavetable as follows :
+Instead of generating a periodic signal with a fixed frequency, a synthesizer must be able to generate a periodic signal with a
+time varying frequencies :math:`f_{0}`. In this subsection, we shows how to modify the rate at which the samples are read in the wavetable to control the 
+frequency :math:`f_{0}` of the waveform.
+
+Let us denote by :math:`y[n]` the :math:`n^{th}` output sample and let us consider that :math:`y[n] = x[m]`.
+To synthesize a waveform with fundamental frequency :math:`f_{0}`, the next output sample can be expressed by :
 
 .. math ::
 
@@ -69,29 +76,51 @@ If :math:`y[n]` corresponds to the nth output sample and  :math:`y[n] = x[m]`, t
 
 * :math:`\Delta=N\frac{f_0}{f_s}` corresponds to the phase delta (increment) between two adjacent samples.
 
-The resulting wavetable index :math:`k=m+\Delta` is not always an integer. To address this issue, two solutions are commonly implemented.
+In the above expression, the next index :math:`k=m+\Delta` is not always an integer as illustrated in the above figure. To obtain the value of :math:`x[k]`, two solutions are commonly used.
 
-0th order Interpolation 
-+++++++++++++++++++++++
+.. plot :: 
+    :include-source: false
 
-The index can be rounded to the  greatest integer less than or equal to :math:`k`. The output sample is then given by :
+    import numpy as np 
+    import matplotlib.pyplot as plt
+
+    from scipy import signal
+
+    N = 128
+    n = np.arange(N)
+    x = np.sin(2*np.pi*n/N)     
+    plt.stem(n, x)
+    plt.axvline(22.75, color="r", linestyle="--")
+    plt.text(22.7, -0.1, 'k', color="r")
+    plt.grid()
+    plt.xlabel("$n$")
+    plt.ylabel("$x[n]$")
+    plt.xlim([20.5, 25.5])
+    plt.ylim([0, 1])
+
+Zero order Interpolation 
+++++++++++++++++++++++++
+
+When the index :math:`k` is not an integer, a simple solution is to truncate the value of :math:`k` to the greatest integer less than or equal to :math:`k`. Specifically, we can 
+Mathematically, the next output sample is then given by :
 
 .. math ::
 
     y[n+1] = x[\lfloor k \rfloor]
 
-where :math:`\lfloor k \rfloor` corresponds to the rounding operation. For example, :math:`\lfloor 3.21 \rfloor=3` and :math:`\lfloor 5.98 \rfloor=5`. 
+* :math:`\lfloor . \rfloor` corresponds to the rounding operator. For example, :math:`\lfloor 3.21 \rfloor=3` and :math:`\lfloor 5.98 \rfloor=5`. 
 
 Linear Interpolation
 ++++++++++++++++++++
 
-The interpolated sample :math:`y[n+1]` can be obtained as :
+To improve the oscillator quality, another solution is to estimate the value of :math:`y[n+1]` from the two nearest samples using an interpolation algorithm.
+Using a linear interpolation, the next output sample can be expressed as :
 
 .. math ::
 
     y[n+1] = x_l + \alpha (x_r-x_l)
 
-* :math:`\alpha = k-\lfloor k \rfloor`,
+* :math:`\alpha = k-\lfloor k \rfloor` is a weighting coefficient (:math:`0\le \alpha<1`),
 * :math:`x_l=x[\lfloor k \rfloor]` and :math:`x_r = x[\lfloor k \rfloor+1]` corresponds to two adjacent samples.
 
 
@@ -133,6 +162,7 @@ Verification
 I recommend to check the validity of the C code by comparing the output of the C and Python implementation.
 
 * First, compile the C code as a shared library 
+
 .. code ::
 
     $ gcc -fPIC -shared my_lib.c -o my_lib.so 
