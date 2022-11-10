@@ -49,7 +49,7 @@ To reduce the computational complexity, we can store in memory a full cycle of a
     plt.ylabel("$x[n]$")
     plt.xlim([0, N-1])
 
-Reading each sample of the wavetable with a sampling frequency :code:`f_s` allows to synthesize a sinewave with frequency 
+By reading each sample of the wavetable with a sampling frequency :code:`f_s`, we synthesize a sinewave with frequency 
 
 .. math ::
     
