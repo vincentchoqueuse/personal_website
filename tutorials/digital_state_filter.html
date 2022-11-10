@@ -316,18 +316,14 @@ linked to the frequency characteristics of the filter. Specifically:</p>
 <h2>Analysis of the Low Pass Filter<a class="headerlink" href="#analysis-of-the-low-pass-filter" title="Permalink to this heading">#</a></h2>
 <section id="difference-equation">
 <h3>Difference equation<a class="headerlink" href="#difference-equation" title="Permalink to this heading">#</a></h3>
-<p>The low pass filter can be described by a difference equation :</p>
+<p>The low pass filter can be described by the difference equation :</p>
 <div class="math notranslate nohighlight">
 \[y_l[n] = \alpha_1^2x[n] -a_1 y_l[n-1] -a_2 y_l[n-2]\]</div>
-<p>where</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(a_1=\alpha_1^2+\alpha_1\alpha_2-2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(a_2=1-\alpha_1\alpha_2\)</span></p></li>
-</ul>
+<p>where <span class="math notranslate nohighlight">\(a_1=\alpha_1^2+\alpha_1\alpha_2-2\)</span> and <span class="math notranslate nohighlight">\(a_2=1-\alpha_1\alpha_2\)</span>.</p>
 </section>
 <section id="frequency-response">
 <h3>Frequency Response<a class="headerlink" href="#frequency-response" title="Permalink to this heading">#</a></h3>
-<p>The following script shows how to plot the frequency response of the low-pass filter.</p>
+<p>The following script plots the frequency response of the low-pass filter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -360,8 +356,9 @@ linked to the frequency characteristics of the filter. Specifically:</p>
 <h2>C Implementation<a class="headerlink" href="#c-implementation" title="Permalink to this heading">#</a></h2>
 <section id="block-based-implementation">
 <h3>Block-based Implementation<a class="headerlink" href="#block-based-implementation" title="Permalink to this heading">#</a></h3>
-<p>The following code shows a possible block-based implementation of the state variable filter. This implementation
-uses a state array <code class="code docutils literal notranslate"><span class="pre">zi</span></code> that store the previous values of <span class="math notranslate nohighlight">\(y_b[n-1]\)</span> and <span class="math notranslate nohighlight">\(y_bl[n-1]\)</span>.</p>
+<p>The following code shows a possible C implementation of the state variable filter. This implementation
+uses a state array <code class="code docutils literal notranslate"><span class="pre">zi</span></code> that store the previous values of <span class="math notranslate nohighlight">\(y_b[n-1]\)</span> and <span class="math notranslate nohighlight">\(y_bl[n-1]\)</span>. This state
+array allows to pass the filter state from block to block.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">state_variable_filter</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">zi</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">fc</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fs</span><span class="p">)</span><span class="w"></span>
@@ -384,8 +381,6 @@ uses a state array <code class="code docutils literal notranslate"><span class="
 <span class="w">        </span><span class="n">zi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_b</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="n">zi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_l</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">zi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">zi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha2</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
@@ -400,7 +395,7 @@ uses a state array <code class="code docutils literal notranslate"><span class="
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Then, run the following python code.</p></li>
+<li><p>Then, in the same folder, run the following python code.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
