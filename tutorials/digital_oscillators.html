@@ -318,18 +318,20 @@ computational complexity of your program. In this tutorial, we describe an alter
 <figure class="align-default">
 <img alt="../_images/digital_oscillators-1.png" class="plot-directive" src="../_images/digital_oscillators-1.png" />
 </figure>
+<p>Reading each sample of the wavetable with a sampling frequency <code class="code docutils literal notranslate"><span class="pre">f_s</span></code> allows to synthesize a sinewave with frequency</p>
+<div class="math notranslate nohighlight">
+\[f_{0}=N/f_s (Hz).\]</div>
 </section>
 <section id="controlling-the-fundamental-frequency">
 <h2>Controlling the Fundamental Frequency<a class="headerlink" href="#controlling-the-fundamental-frequency" title="Permalink to this heading">#</a></h2>
-<p>Reading each sample of the wavetable with a sampling frequency <code class="code docutils literal notranslate"><span class="pre">f_s</span></code> allows to synthesize a sinewave with frequency
-<span class="math notranslate nohighlight">\(f_{0}=N/f_s\)</span> Hz. To modify the fundamental frequency to <span class="math notranslate nohighlight">\(f_0\)</span> Hz, one solution is to change the rate at which the samples are
+<p>To control the fundamental frequency <span class="math notranslate nohighlight">\(f_0\)</span> Hz, one solution is to change the rate at which the samples are
 read in the wavetable. If <span class="math notranslate nohighlight">\(y[n]\)</span> corresponds to the nth output sample and  <span class="math notranslate nohighlight">\(y[n] = x[m]\)</span>, the (n+1)th output signal can be computed from the wavetable as follows :</p>
 <div class="math notranslate nohighlight">
 \[y[n+1] = x[m+\Delta]\]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Delta=N\frac{f_0}{f_s}\)</span> corresponds to the phase delta between two adjacent samples.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta=N\frac{f_0}{f_s}\)</span> corresponds to the phase delta (increment) between two adjacent samples.</p></li>
 </ul>
-<p>It is important to note that the index <span class="math notranslate nohighlight">\(k=m+\Delta\)</span> is not always an integer. To address this issue, two solutions can be implemented.</p>
+<p>The resulting wavetable index <span class="math notranslate nohighlight">\(k=m+\Delta\)</span> is not always an integer. To address this issue, two solutions are commonly implemented.</p>
 <section id="th-order-interpolation">
 <h3>0th order Interpolation<a class="headerlink" href="#th-order-interpolation" title="Permalink to this heading">#</a></h3>
 <p>The index can be rounded to the  greatest integer less than or equal to <span class="math notranslate nohighlight">\(k\)</span>. The output sample is then given by :</p>

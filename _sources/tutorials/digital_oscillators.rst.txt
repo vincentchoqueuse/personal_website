@@ -49,20 +49,25 @@ To reduce the computational complexity, we can store in memory a full cycle of a
     plt.ylabel("$x[n]$")
     plt.xlim([0, N-1])
 
+Reading each sample of the wavetable with a sampling frequency :code:`f_s` allows to synthesize a sinewave with frequency 
+
+.. math ::
+    
+    f_{0}=N/f_s (Hz). 
+
 Controlling the Fundamental Frequency
 -------------------------------------
 
-Reading each sample of the wavetable with a sampling frequency :code:`f_s` allows to synthesize a sinewave with frequency 
-:math:`f_{0}=N/f_s` Hz. To modify the fundamental frequency to :math:`f_0` Hz, one solution is to change the rate at which the samples are 
+To control the fundamental frequency :math:`f_0` Hz, one solution is to change the rate at which the samples are 
 read in the wavetable. If :math:`y[n]` corresponds to the nth output sample and  :math:`y[n] = x[m]`, the (n+1)th output signal can be computed from the wavetable as follows :
 
 .. math ::
 
     y[n+1] = x[m+\Delta]
 
-* :math:`\Delta=N\frac{f_0}{f_s}` corresponds to the phase delta between two adjacent samples.
+* :math:`\Delta=N\frac{f_0}{f_s}` corresponds to the phase delta (increment) between two adjacent samples.
 
-It is important to note that the index :math:`k=m+\Delta` is not always an integer. To address this issue, two solutions can be implemented.
+The resulting wavetable index :math:`k=m+\Delta` is not always an integer. To address this issue, two solutions are commonly implemented.
 
 0th order Interpolation 
 +++++++++++++++++++++++
