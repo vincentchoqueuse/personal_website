@@ -32,21 +32,18 @@ Analysis of the Low Pass Filter
 Difference equation
 +++++++++++++++++++
 
-The low pass filter can be described by a difference equation :
+The low pass filter can be described by the difference equation :
 
 .. math ::
 
     y_l[n] = \alpha_1^2x[n] -a_1 y_l[n-1] -a_2 y_l[n-2]
 
-where 
-
-* :math:`a_1=\alpha_1^2+\alpha_1\alpha_2-2`
-* :math:`a_2=1-\alpha_1\alpha_2`
+where :math:`a_1=\alpha_1^2+\alpha_1\alpha_2-2` and :math:`a_2=1-\alpha_1\alpha_2`.
 
 Frequency Response
 ++++++++++++++++++
 
-The following script shows how to plot the frequency response of the low-pass filter.
+The following script plots the frequency response of the low-pass filter.
 
 .. plot :: 
     :include-source: true
@@ -79,8 +76,9 @@ C Implementation
 Block-based Implementation
 ++++++++++++++++++++++++++
 
-The following code shows a possible block-based implementation of the state variable filter. This implementation 
-uses a state array :code:`zi` that store the previous values of :math:`y_b[n-1]` and :math:`y_bl[n-1]`.
+The following code shows a possible C implementation of the state variable filter. This implementation 
+uses a state array :code:`zi` that store the previous values of :math:`y_b[n-1]` and :math:`y_bl[n-1]`. This state 
+array allows to pass the filter state from block to block.
 
 .. code :: c
 
@@ -106,8 +104,6 @@ uses a state array :code:`zi` that store the previous values of :math:`y_b[n-1]`
             zi[0] = y_b;
             zi[1] = y_l;
         }
-        zi[0] = alpha1;
-        zi[1] = alpha2;
     }
 
 
@@ -121,7 +117,7 @@ I recommend to check the validity of the C code by comparing the output of the C
 
     $ gcc -fPIC -shared my_lib.c -o my_lib.so 
 
-* Then, run the following python code.
+* Then, in the same folder, run the following python code.
 
 .. code ::
     
