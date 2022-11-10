@@ -32,6 +32,9 @@ Journals
 Conferences
 -----------
 
+#. Alexandru Frunză, Vincent Choqueuse, Pascal Morel, Alexandru Serbănescu, Sténhane Azou, A Comparative Study on Global Compensation Techniques for Coherent Optical Communications, 2022 14th International Conference on Communications (COMM), 1-6, 2022, IEEE
+#. Abraham Sotomayor, Erwan Pincemin, Vincent Choqueuse, Michel Morvan, Optimized Cost Function of Multi-Layer Perceptron for Fibre Non-Linear Impairment Mitigation in Coherent 200-Gbps DP-16QAM Transmission System, Novel Optical Materials and Applications, 2022, Optica Publishing Group.
+#. Vincent Choqueuse, Alexandru Frunza, Adel Belouchrani, Stéphane Azou, Pascal Morel, ParamNet: A multi-layer parametric network for joint channel estimation and symbol detection, 2022 30th European Signal Processing Conference (EUSIPCO), 2022, 1616-1620, IEEE
 #. Frunză,  Alexandru; Choqueuse,  Vincent; Morel,  Pascal; Serbănescu,  Alexandru; Azou,  Sténhane; , A Comparative Study on Global Compensation Techniques for Coherent Optical Communications, 2022 14th International Conference on Communications (COMM), 1-6, 2022, IEEE
 #. Frini,  Marouane; Auger,  François; , Parametric Tracking of Electrical Currents Using Gradient Descent Algorithm., CoRR, 2021, 
 #. Frunză,  Alexandru; Sime,  Jacqueline E; Choqueuse,  Vincent; Morel,  Pascal; Azou,  Stéphane; , Joint Estimation and Compensation of Transmitter IQ Imbalance and Laser Phase Noise in Coherent Optical Systems, 2021 IEEE Photonics Conference (IPC), 1-2, 2021, IEEE

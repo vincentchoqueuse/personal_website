@@ -234,8 +234,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wavetable">
-   Wavetable
+  <a class="reference internal nav-link" href="#wavetable-oscillator">
+   Wavetable Oscillator
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -244,8 +244,8 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#th-order-interpolation">
-     0th order Interpolation
+    <a class="reference internal nav-link" href="#zero-order-interpolation">
+     Zero order Interpolation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -296,57 +296,68 @@ Specifically, we focus on the generation of a sine waveform, but this tutorial c
 other waveforms such as triangle or sawtooth waveforms.</p>
 <section id="sine-wave-waveform">
 <h2>Sine Wave Waveform<a class="headerlink" href="#sine-wave-waveform" title="Permalink to this heading">#</a></h2>
-<p>A sine wave can be mathematically described as</p>
+<p>A sine wave is mathematically described by :</p>
 <div class="math notranslate nohighlight">
 \[x(t) = \sin(2\pi f_0 t)\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f_0\)</span> corresponds to the fundamental frequency.</p></li>
 </ul>
-<p>In the digital domain, the sine wave can be obtained by evaluating
-<span class="math notranslate nohighlight">\(x(t)\)</span> for <span class="math notranslate nohighlight">\(t=n/fs\)</span> with <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>. For the C language, the function <span class="math notranslate nohighlight">\(x(n/fs)\)</span> can be evaluated
-naively using the <code class="code docutils literal notranslate"><span class="pre">sin</span></code> function of the library <code class="code docutils literal notranslate"><span class="pre">math.h</span></code>. Nevertheless, the evaluation of trigonometric functions increases the
-computational complexity of your program. In this tutorial, we describe an alternative low-complexity implementation based on a wavetable.</p>
+<p>In the digital domain, the sine wave can be obtained by evaluating <span class="math notranslate nohighlight">\(x(t)\)</span> for <span class="math notranslate nohighlight">\(t=n/f_s\)</span> where <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span> and <span class="math notranslate nohighlight">\(f_s\)</span> is the sampling frequency.</p>
+<p>When using the C language, the function <span class="math notranslate nohighlight">\(x[n]=x(n/fs)\)</span> can be evaluated
+naively using the <code class="code docutils literal notranslate"><span class="pre">sin</span></code> function of the library <code class="code docutils literal notranslate"><span class="pre">math.h</span></code>. Nevertheless, it is important to note that the evaluation of trigonometric functions
+has a relatively large computational cost. In this tutorial, we describe an alternative low-complexity implementation based on a wavetable oscillator.</p>
 </section>
-<section id="wavetable">
-<h2>Wavetable<a class="headerlink" href="#wavetable" title="Permalink to this heading">#</a></h2>
-<p>To reduce the computational complexity, we can store in memory a full cycle of a sine waveform.</p>
+<section id="wavetable-oscillator">
+<h2>Wavetable Oscillator<a class="headerlink" href="#wavetable-oscillator" title="Permalink to this heading">#</a></h2>
+<p>To reduce the computational complexity, one solution is to store in memory a single full cycle of a reference waveform.
+For a sine wave, the reference waveform is given by :</p>
 <div class="math notranslate nohighlight">
 \[x[n] = \sin(2\pi n/N)\]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(N\in \mathbb{N}\)</span> corresponds to the length of the wavetable.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> corresponds to the length of the wavetable.</p></li>
 </ul>
 <figure class="align-default">
 <img alt="../_images/digital_oscillators-1.png" class="plot-directive" src="../_images/digital_oscillators-1.png" />
 </figure>
-<p>By reading each sample of the wavetable with a sampling frequency <code class="code docutils literal notranslate"><span class="pre">f_s</span></code>, we synthesize a sinewave with frequency</p>
+<p>The fundamental frequency of this waveform depends on the sampling frequency <code class="code docutils literal notranslate"><span class="pre">f_s</span></code>. By reading each sample
+of the wavetable sample by sample, we can synthesize a periodic waveform with a fixed fundamental frequency :</p>
 <div class="math notranslate nohighlight">
-\[f_{0}=N/f_s (Hz).\]</div>
-<p>In practice, we need to synthesize a sine wave with arbitrary frequency <span class="math notranslate nohighlight">\(f_0\)</span>. The following section shows how
-to modify the rate at which the samples are read in the wavetable.</p>
+\[f_{0}=N/f_s~~[Hz].\]</div>
 </section>
 <section id="controlling-the-fundamental-frequency">
 <h2>Controlling the Fundamental Frequency<a class="headerlink" href="#controlling-the-fundamental-frequency" title="Permalink to this heading">#</a></h2>
-<p>If <span class="math notranslate nohighlight">\(y[n]\)</span> corresponds to the nth output sample and  <span class="math notranslate nohighlight">\(y[n] = x[m]\)</span>, the (n+1)th output signal can be computed from the wavetable as follows :</p>
+<p>Instead of generating a periodic signal with a fixed frequency, a synthesizer must be able to generate a periodic signal with a
+time varying frequencies <span class="math notranslate nohighlight">\(f_{0}\)</span>. In this subsection, we shows how to modify the rate at which the samples are read in the wavetable to control the
+frequency <span class="math notranslate nohighlight">\(f_{0}\)</span> of the waveform.</p>
+<p>Let us denote by <span class="math notranslate nohighlight">\(y[n]\)</span> the <span class="math notranslate nohighlight">\(n^{th}\)</span> output sample and let us consider that <span class="math notranslate nohighlight">\(y[n] = x[m]\)</span>.
+To synthesize a waveform with fundamental frequency <span class="math notranslate nohighlight">\(f_{0}\)</span>, the next output sample can be expressed by :</p>
 <div class="math notranslate nohighlight">
 \[y[n+1] = x[m+\Delta]\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Delta=N\frac{f_0}{f_s}\)</span> corresponds to the phase delta (increment) between two adjacent samples.</p></li>
 </ul>
-<p>The resulting wavetable index <span class="math notranslate nohighlight">\(k=m+\Delta\)</span> is not always an integer. To address this issue, two solutions are commonly implemented.</p>
-<section id="th-order-interpolation">
-<h3>0th order Interpolation<a class="headerlink" href="#th-order-interpolation" title="Permalink to this heading">#</a></h3>
-<p>The index can be rounded to the  greatest integer less than or equal to <span class="math notranslate nohighlight">\(k\)</span>. The output sample is then given by :</p>
+<p>In the above expression, the next index <span class="math notranslate nohighlight">\(k=m+\Delta\)</span> is not always an integer as illustrated in the above figure. To obtain the value of <span class="math notranslate nohighlight">\(x[k]\)</span>, two solutions are commonly used.</p>
+<figure class="align-default">
+<img alt="../_images/digital_oscillators-2.png" class="plot-directive" src="../_images/digital_oscillators-2.png" />
+</figure>
+<section id="zero-order-interpolation">
+<h3>Zero order Interpolation<a class="headerlink" href="#zero-order-interpolation" title="Permalink to this heading">#</a></h3>
+<p>When the index <span class="math notranslate nohighlight">\(k\)</span> is not an integer, a simple solution is to truncate the value of <span class="math notranslate nohighlight">\(k\)</span> to the greatest integer less than or equal to <span class="math notranslate nohighlight">\(k\)</span>. Specifically, we can
+Mathematically, the next output sample is then given by :</p>
 <div class="math notranslate nohighlight">
 \[y[n+1] = x[\lfloor k \rfloor]\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lfloor k \rfloor\)</span> corresponds to the rounding operation. For example, <span class="math notranslate nohighlight">\(\lfloor 3.21 \rfloor=3\)</span> and <span class="math notranslate nohighlight">\(\lfloor 5.98 \rfloor=5\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lfloor . \rfloor\)</span> corresponds to the rounding operator. For example, <span class="math notranslate nohighlight">\(\lfloor 3.21 \rfloor=3\)</span> and <span class="math notranslate nohighlight">\(\lfloor 5.98 \rfloor=5\)</span>.</p></li>
+</ul>
 </section>
 <section id="linear-interpolation">
 <h3>Linear Interpolation<a class="headerlink" href="#linear-interpolation" title="Permalink to this heading">#</a></h3>
-<p>The interpolated sample <span class="math notranslate nohighlight">\(y[n+1]\)</span> can be obtained as :</p>
+<p>To improve the oscillator quality, another solution is to estimate the value of <span class="math notranslate nohighlight">\(y[n+1]\)</span> from the two nearest samples using an interpolation algorithm.
+Using a linear interpolation, the next output sample can be expressed as :</p>
 <div class="math notranslate nohighlight">
 \[y[n+1] = x_l + \alpha (x_r-x_l)\]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\alpha = k-\lfloor k \rfloor\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha = k-\lfloor k \rfloor\)</span> is a weighting coefficient (<span class="math notranslate nohighlight">\(0\le \alpha&lt;1\)</span>),</p></li>
 <li><p><span class="math notranslate nohighlight">\(x_l=x[\lfloor k \rfloor]\)</span> and <span class="math notranslate nohighlight">\(x_r = x[\lfloor k \rfloor+1]\)</span> corresponds to two adjacent samples.</p></li>
 </ul>
 </section>
