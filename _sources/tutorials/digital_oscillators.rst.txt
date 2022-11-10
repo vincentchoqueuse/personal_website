@@ -78,6 +78,8 @@ The index can be rounded to the  greatest integer less than or equal to :math:`k
 
     y[n+1] = x[\lfloor k \rfloor]
 
+where :math:`\lfloor k \rfloor` corresponds to the rounding operation. For example, :math:`\lfloor 3.21 \rfloor=3` and :math:`\lfloor 5.98 \rfloor=5`. 
+
 Linear Interpolation
 ++++++++++++++++++++
 
