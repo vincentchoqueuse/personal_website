@@ -90,7 +90,7 @@ The interpolated sample :math:`y[n+1]` can be obtained as :
     y[n+1] = x_l + \alpha (x_r-x_l)
 
 * :math:`\alpha = k-\lfloor k \rfloor`,
-* :math:`x_l=x[k]` and :math:`x_r = x[k+1]` corresponds to two adjacent samples.
+* :math:`x_l=x[\lfloor k \rfloor]` and :math:`x_r = x[\lfloor k \rfloor+1]` corresponds to two adjacent samples.
 
 
 C Implementation 
