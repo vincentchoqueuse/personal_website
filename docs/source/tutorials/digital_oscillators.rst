@@ -56,7 +56,7 @@ of the wavetable sample by sample, we can synthesize a periodic waveform with a 
 
 .. math ::
     
-    f_{0}=N/f_s~~[Hz]. 
+    f_{0}=f_s/N~~[Hz]. 
 
 
 
