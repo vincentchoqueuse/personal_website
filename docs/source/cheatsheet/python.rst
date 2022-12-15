@@ -44,7 +44,7 @@ Control Flow
     if name != 'George':
         print('You are not George')
     else:
-        print('You are not George')
+        print('You are George')
 
 .. code :: 
 
