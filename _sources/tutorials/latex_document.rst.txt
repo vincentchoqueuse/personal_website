@@ -1,18 +1,14 @@
 Latex Manuscripts 
 =================
 
-If you want to write some technical document (report, PhD thesis), you can use a WYSIWYG program such as Word or 
-you can use the Latex language. In this page, I describe how to use the Latex language.
-
+If you want to write some technical document (report, Ph.D. thesis), you can use a WYSIWYG program such as Word or the Latex language. On this page, I describe how to use the Latex language.
 
 Install Latex
 -------------
 
 > Informations from: https://www.latex-project.org/get/
 
-Many people uses cloud-based solution such as Overleaf to write Latex. This strategy can be great if you work with a research team for example.
-Before using cloud-based solution, in my opinion, it is important to know how to compile a Latex document using your local machine. To compile a Latex document, 
-you need to install a Latex distribution.
+Many people use a cloud-based solution such as Overleaf to write Latex. This strategy can be great if you work with a research team, for example. However, before using a cloud-based solution, it is essential to know how to compile a Latex document using your local machine. To compile a Latex document, you need to install a Latex distribution.
 
 Windows
 +++++++
@@ -27,9 +23,7 @@ The `MacTeX <https://www.tug.org/mactex/>`_ distribution contains everything you
 Latex Editor 
 ------------
 
-The MikTex or MacTex distributions already contain a Latex editor (TexWorks or TexShop). For large document, you 
-can also use a customized text editor. My preference definitely goes for VSCode for this kind of stuff. 
-
+The MikTex or MacTex distributions already contain a Latex editor (TexWorks or TexShop). For large documents, you can also use a customized text editor. My preference goes for VSCode for this kind of stuff.
 Templates
 ---------
 
