@@ -11,3 +11,4 @@ Tutorials
     sphinx_course.rst
     c_numpy.rst
     conda.rst
+    latex_document.rst
