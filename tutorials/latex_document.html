@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Projects &#8212; personal website  documentation</title>
+    <title>Latex Manuscripts &#8212; personal website  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -40,8 +40,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="STM32 FM Synthesizer" href="FM_synthesizer.html" />
-    <link rel="prev" title="Latex Manuscripts" href="../tutorials/latex_document.html" />
+    <link rel="next" title="Projects" href="../projects/index.html" />
+    <link rel="prev" title="Utilisation de Conda" href="conda.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -97,14 +97,14 @@
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../tutorials/index.html">
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
   Tutorials
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="current reference internal nav-link" href="#">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../projects/index.html">
   Projects
  </a>
 </li>
@@ -172,10 +172,40 @@
   Contents:
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="FM_synthesizer.html">
-   STM32 FM Synthesizer
+  <a class="reference internal" href="digital_oscillators.html">
+   Digital Oscillators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="digital_state_filter.html">
+   Digital State Variable Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="macos_installation.html">
+   Installation MacOS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sphinx_course.html">
+   Course Website with Sphinx
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="c_numpy.html">
+   Calling a C function from Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conda.html">
+   Utilisation de Conda
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Latex Manuscripts
   </a>
  </li>
 </ul>
@@ -196,9 +226,48 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-latex">
+   Install Latex
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mac-os">
+     Mac OS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latex-editor">
+   Latex Editor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#templates">
+   Templates
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usage">
+     Usage
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -216,14 +285,54 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="projects">
-<h1>Projects<a class="headerlink" href="#projects" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="FM_synthesizer.html">STM32 FM Synthesizer</a></li>
+  <section id="latex-manuscripts">
+<h1>Latex Manuscripts<a class="headerlink" href="#latex-manuscripts" title="Permalink to this heading">#</a></h1>
+<p>If you want to write some technical document (report, PhD thesis), you can use a WYSIWYG program such as Word or
+you can use the Latex language. In this page, I describe how to use the Latex language.</p>
+<section id="install-latex">
+<h2>Install Latex<a class="headerlink" href="#install-latex" title="Permalink to this heading">#</a></h2>
+<p>&gt; Informations from: <a class="reference external" href="https://www.latex-project.org/get/">https://www.latex-project.org/get/</a></p>
+<p>Many people uses cloud-based solution such as Overleaf to write Latex. This strategy can be great if you work with a research team for example.
+Before using cloud-based solution, in my opinion, it is important to know how to compile a Latex document using your local machine. To compile a Latex document,
+you need to install a Latex distribution.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
+<p>Check out the <a class="reference external" href="https://miktex.org/download">MiKTeX</a> or proTeXt or TeX Live distributions; they contain a complete TeX system with LaTeX itself and editors to write documents.</p>
+</section>
+<section id="mac-os">
+<h3>Mac OS<a class="headerlink" href="#mac-os" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://www.tug.org/mactex/">MacTeX</a> distribution contains everything you need, including a complete TeX system with LaTeX itself and editors to write documents.</p>
+</section>
+</section>
+<section id="latex-editor">
+<h2>Latex Editor<a class="headerlink" href="#latex-editor" title="Permalink to this heading">#</a></h2>
+<p>The MikTex or MacTex distributions already contain a Latex editor (TexWorks or TexShop). For large document, you
+can also use a customized text editor. My preference definitely goes for VSCode for this kind of stuff.</p>
+</section>
+<section id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Permalink to this heading">#</a></h2>
+<p>I’ve created some templates for large document. These templates are mainly inspired from the superb gitlab <a class="reference external" href="https://gitlab.inria.fr/ed-mathstic/latex-template">INRIA</a> template.</p>
+<ul class="simple">
+<li><p>PhD template for the MathSTIC Doctoral School: <a class="reference external" href="https://github.com/vincentchoqueuse/MathSTIC_Latex_template">https://github.com/vincentchoqueuse/MathSTIC_Latex_template</a></p></li>
+<li><p>Report Template for the ENIB students: <a class="reference external" href="https://github.com/vincentchoqueuse/ENIB_latex_template">https://github.com/vincentchoqueuse/ENIB_latex_template</a></p></li>
 </ul>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
+<p>To use a template,</p>
+<ol class="arabic simple">
+<li><p>Clone the github repo (git need to be installed on your local machine):</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/vincentchoqueuse/ENIB_latex_template
+</pre></div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>Go to the cloned repo and then run :</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make pdf
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
