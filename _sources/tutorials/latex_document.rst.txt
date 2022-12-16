@@ -32,20 +32,24 @@ I've created some templates for large document. These templates are mainly inspi
 * PhD template for the MathSTIC Doctoral School: https://github.com/vincentchoqueuse/MathSTIC_Latex_template
 
 .. image:: img/thesis0.png
+  :align: center
   :width: 30%
   :alt: Front Cover
 
 .. image:: img/thesis1.png
+  :align: center
   :width: 30%
   :alt: Back Cover
 
 * Report Template for the ENIB students: https://github.com/vincentchoqueuse/ENIB_latex_template
 
 .. image:: img/enib0.png
+  :align: center
   :width: 30%
   :alt: Front Cover
 
 .. image:: img/enib1.png
+  :align: center
   :width: 30%
   :alt: Back Cover
 
