@@ -24,6 +24,7 @@ Latex Editor
 ------------
 
 The MikTex or MacTex distributions already contain a Latex editor (TexWorks or TexShop). For large documents, you can also use a customized text editor. My preference goes for VSCode for this kind of stuff.
+
 Templates
 ---------
 
