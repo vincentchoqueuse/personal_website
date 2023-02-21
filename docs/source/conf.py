@@ -75,6 +75,10 @@ plot_html_show_source_link = False
 plot_html_show_formats = False
 
 html_theme_options = {
+  "logo": {
+      "image_light": "logo.svg",
+      "image_dark": "logo.svg",
+   },
   "navigation_depth": 3,
   "show_toc_level": 3,
   "show_prev_next": False,
