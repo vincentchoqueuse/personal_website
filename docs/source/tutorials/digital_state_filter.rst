@@ -113,6 +113,7 @@ Verification
 I recommend to check the validity of the C code by comparing the output of the C and Python implementation.
 
 * First, compile the C code as a shared library 
+
 .. code ::
 
     $ gcc -fPIC -shared my_lib.c -o my_lib.so 
