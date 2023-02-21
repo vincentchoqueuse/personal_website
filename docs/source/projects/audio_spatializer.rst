@@ -40,3 +40,16 @@ Methodology
 * Step 1: Play wav files using the raspberry py with usb sound speaker (play/stop, looping, volume control),
 * Step 2: Send messages from the master raspberry to the client raspberry using Ethernet or Wifi. The messages should control the client audio activity. 
 * Step 3: Create a web application on the master raspberry to control the audio activity
+
+
+.. image:: img/project1.png
+    :align: center
+    :width: 200
+
+
+Link 
+----
+
+.. image:: img/project2.png
+    :align: center
+    :width: 200
