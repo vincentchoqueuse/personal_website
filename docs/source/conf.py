@@ -75,8 +75,6 @@ plot_html_show_source_link = False
 plot_html_show_formats = False
 
 html_theme_options = {
-  "logo_only": True,
-  "display_version": False,
   "navigation_depth": 3,
   "show_toc_level": 3,
   "show_prev_next": False,
