@@ -42,11 +42,6 @@ Methodology
 * Step 3: Create a web application on the master raspberry to control the audio activity
 
 
-.. image:: img/project1.png
-    :align: center
-    :width: 200
-
-
 Link 
 ----
 
