@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Tutorials &#8212; personal website  documentation</title>
+    <title>Audio Spatializer IOT System &#8212; personal website  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -37,8 +37,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Digital Oscillators" href="digital_oscillators.html" />
-    <link rel="prev" title="Publications" href="../research/publications.html" />
+    <link rel="next" title="Cheatsheet" href="../cheatsheet/index.html" />
+    <link rel="prev" title="STM32 FM Synthesizer" href="FM_synthesizer.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -93,14 +93,14 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="current reference internal nav-link" href="#">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../tutorials/index.html">
   Tutorials
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../projects/index.html">
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
   Projects
  </a>
 </li>
@@ -168,40 +168,15 @@
   Contents:
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="digital_oscillators.html">
-   Digital Oscillators
+  <a class="reference internal" href="FM_synthesizer.html">
+   STM32 FM Synthesizer
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="digital_state_filter.html">
-   Digital State Variable Filter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="macos_installation.html">
-   Installation MacOS
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sphinx_course.html">
-   Course Website with Sphinx
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="c_numpy.html">
-   Calling a C function from Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="conda.html">
-   Utilisation de Conda
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="latex_document.html">
-   Latex Manuscripts
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Audio Spatializer IOT System
   </a>
  </li>
 </ul>
@@ -222,9 +197,36 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description">
+   Description
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#current-platform">
+     Current Platform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proposed-alternative">
+     Proposed Alternative
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodology">
+   Methodology
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -242,20 +244,43 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="tutorials">
-<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="digital_oscillators.html">Digital Oscillators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital_state_filter.html">Digital State Variable Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="macos_installation.html">Installation MacOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sphinx_course.html">Course Website with Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_numpy.html">Calling a C function from Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conda.html">Utilisation de Conda</a></li>
-<li class="toctree-l1"><a class="reference internal" href="latex_document.html">Latex Manuscripts</a></li>
+  <section id="audio-spatializer-iot-system">
+<h1>Audio Spatializer IOT System<a class="headerlink" href="#audio-spatializer-iot-system" title="Permalink to this heading">#</a></h1>
+<p>The goal of this project is to create a low-cost system to generate sounds (synthetic and recorded) from several speakers for the ZG6 project.</p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
+<section id="current-platform">
+<h3>Current Platform<a class="headerlink" href="#current-platform" title="Permalink to this heading">#</a></h3>
+<p>Currently, the ZG6 sound test platform is composed of:</p>
+<ul class="simple">
+<li><p>A web-based software to control the sounds (<a class="reference external" href="https://zg6.s3.eu-west-3.amazonaws.com/index.html">https://zg6.s3.eu-west-3.amazonaws.com/index.html</a>)</p></li>
+<li><p>An usb soundcard with multiple outputs (scarlett focusrite),</p></li>
+<li><p>5 KRK speakers,</p></li>
+<li><p>5 audio jacks</p></li>
 </ul>
-</div>
+<img alt="Original PLatform" src="../_images/setup1.jpg" />
+<p>The above setup costs approximately 1500 euros and requires a laptop or a PC with appropriate driver</p>
+</section>
+<section id="proposed-alternative">
+<h3>Proposed Alternative<a class="headerlink" href="#proposed-alternative" title="Permalink to this heading">#</a></h3>
+<p>In this project, we propose to replace the current platform by the following system</p>
+<ul class="simple">
+<li><p>A laptop or a mobile phone device,</p></li>
+<li><p>A server application (Backend Flask / Django, Frontend Vue) hosted on a raspberry Pi,</p></li>
+<li><p>5 raspberry Pi (or Pi zero) connected to low-cost audio speakers,</p></li>
+<li><p>(A network switch).</p></li>
+</ul>
+<img alt="Proposed alternative" src="../_images/setup2.jpg" />
+</section>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Step 1: Play wav files using the raspberry py with usb sound speaker (play/stop, looping, volume control),</p></li>
+<li><p>Step 2: Send messages from the master raspberry to the client raspberry using Ethernet or Wifi. The messages should control the client audio activity.</p></li>
+<li><p>Step 3: Create a web application on the master raspberry to control the audio activity</p></li>
+</ul>
+</section>
 </section>
 
 

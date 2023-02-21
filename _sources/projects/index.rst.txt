@@ -6,3 +6,4 @@ Projects
     :caption: Contents:
 
     FM_synthesizer.rst
+    audio_spatializer.rst
